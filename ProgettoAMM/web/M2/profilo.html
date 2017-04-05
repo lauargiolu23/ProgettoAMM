@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Nerdbook </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="ArgioluLaura">
+        <meta name="keywords" content="Nerdbook social network amicizie foto like.">
+        <link rel="stylesheet" type="text/css" href="style.css" media="screen">
+    </head>
+    <body>
+        <div id="nav">
+            <nav>
+                <ul>
+                    <li> <p> <a href="descrizione.html">Ritorna alla pagina Descrizione</a></p></li> 
+                    <li> <p> <a href="login.html">Ritorna alla pagina Login</a></li>  
+                </ul>
+            </nav>
+        </div>        
+        <div>
+            <form action="profilo.php" method="post">
+                <label for="nome"> Nome Utente</label>
+                <input name="nome" type="text" id="nome" placeholder="Inserisci Nome" required/>
+                <br>
+                <label for="cognome"> Cognome Utente</label>
+                <input name="cognome" type="text" id="cognome" placeholder="Inserisci cognome" required/>
+                <br>
+                <label for="imgURL"> Inserisci URL immagine profilo</label>                       
+                <input type="url" name="imgURL" id="imgURL" required/>
+                <br>
+                <label for="frasepres"> Inserisci frase di presentazione:</label> <br>
+                <textarea name="frasepres" id="frasepres" rows="5" cols="25"></textarea>
+                <br>
+                <label>Inserisci data di nascita</label>
+                <input type="date" name="datanasc" id="datanasc">
+                <br>
+                <label for="password"> Password: </label>
+                <input type="password" name="password" id ="password" value="">
+                <br> 
+                <label for="cpassword"> Conferma Password: </label>
+                <input type="password" name="cpassword" id ="cpassword" >
+                <br> 
+                             
+                <button type="submit">Conferma e invia</button> 
+            </form>
+        </div>       
+    </body>
+</html>

@@ -1,0 +1,165 @@
+/* 
+    Created on : 3-apr-2017, 20.15.12
+    Author     : Argio
+*/
+
+body{
+    background-color: #C8BFAE;
+    font: 20px/27px "Open Sans", Arial, sans-serif;         /*da modificare*/
+}
+
+h1{
+    margin-top: 0px; /*Esaminato con inspector*/
+    color: #1E26C5;
+    font: 35px/40px "Open Sans", Arial, sans-serif;         /*da modificare*/
+    font-weight: bold;
+}
+
+h2{
+    margin-top: 0px; /*Esaminato con inspector*/
+    color: #010148;
+    font: 25px/40px "Open Sans", Arial, sans-serif;     /*da modificare ..align-content: ??*/
+    font-weight: bold;
+}
+
+h3{
+    margin-top: 0px; /*Esaminato con inspector*/
+    color: #01017D;
+    font: 25px/40px "Open Sans", Arial, sans-serif;         /*da modificare*/
+    font-weight: bold;
+}
+
+/*visualiz dei link*/
+a:link{
+    font-size: 25px;
+    text-decoration: none;
+    color: #1E2686;
+}
+/*solo per quelli nav che portano ad altre pagine*/
+#nav a:link{
+    
+    font-size: 25px;
+    text-decoration: none;
+    color: #1E2686;
+ }
+ #nav a:hover{
+    font-size: 150%;
+    background-color: #A5BFAE;
+    text-decoration: underline;
+  
+}
+/*solo*/
+#nav a:hover {
+    background-color: #A5BFAE;
+    text-decoration: underline;
+    font-size: 150%;
+}
+
+
+/*e quelli già visitati/*/
+a:visited{
+    font-size: 25px;
+    text-decoration: none;
+    color: #1E2686;
+}
+/* sfondo del link quando il mouse ci passa*/
+a:hover {
+    background-color: #A5BFAE;
+    font-size: 150%;
+}
+
+/* quando il link viene selezionato */
+a:active {
+    color: #F62F2F;
+  
+    
+}
+
+
+nav ol, nav li{
+    list-style-type: none;
+    display: inline-block;
+    font-family: monospace;
+}
+
+/*
+nav li{
+    padding-left: 20px;
+    padding-right: 20px;
+    border-right: 2px solid #111111;
+}
+
+nav li:last-child{
+    border-right: 0px solid #111111;
+}
+
+nav li.active{
+    text-decoration: underline;
+}
+
+nav{
+    background-color: #ffffff;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0,0,0,.2);
+}
+*/
+
+header{
+    font: 40px/50px "Open Sans", Arial, sans-serif;
+    background-color: #121212;
+    text-align: center;
+    margin-bottom: 5px;
+   /* box-shadow: 0 0 10px rgba(0,0,0,.2);*/
+
+    box-shadow: 10px 10px 5px #888888;
+}
+/* verificare bene a csa serve*/
+#title{
+    background-color: #ffffff;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+#login{
+    background-color: #ffffff;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    width: 350px;
+    height: 325px;
+    box-shadow: 0 0 10px rgba(0,0,0,.2);
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0px;
+   
+}
+
+#login label{
+    font: 25px/30px "Open Sans", Arial, sans-serif;
+}
+#contenuto{
+    padding-top: 20px;
+    padding-bottom: 5px;
+    border : 1px solid black;
+    text-align: left;
+    width: 350px;
+    height: 300px;
+  
+    
+}/*
+#contenuto label:{
+    content: '\A';
+    white-space: pre;
+    padding: 20px;
+}
+
+#contenuto textarea{
+    height: 60px;
+    width: 98.5%;
+}
+
+#contenuto textarea:focus{
+   outline: none;
+   border-color: #22bb22;
+   box-shadow: 0 0 10px #22bb22;
+}*
+*/
