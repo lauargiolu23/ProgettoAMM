@@ -7,9 +7,10 @@
         <meta name="author" content="ArgioluLaura">
         <meta name="keywords" content="Nerdbook social network amicizie foto like.">
         <link rel="stylesheet" type="text/css" href="style.css" media="screen">
+
     </head>
     <body>
-        <div id="nav">
+        <div>
             <nav>
                 <ul>
                     <li><a href="descrizione.html">Ritorna alla pagina descrizione</a></li>
@@ -18,21 +19,27 @@
                 </ul>
             </nav>
         </div>
-        <header>
-            <div id="title">
-                <h1> Nerdbook </h1> 
+        <div class="contenitore">
+            <div>
+                    <h1>NerdBook</h1>
             </div>
-        </header>
-        <div id="login">
-            <div id="contenuto">
-                <form action="login.php" method="post">
-                    <h2> <label for="username"> User name: </label></h2>
-                    <input type="text" name="username" id="username">
-
-                    <h2><label for="password"> Password: </label></h2>
-                    <input type="password" name="password" id ="password" value="">
-                    <button type="submit">Login</button>    
-                </form>
+            <div class="login">
+                <div>
+                    <form action="login.php" method="post">
+                        <div class="loginInput">
+                            <h2> <label for="username"> User name: </label></h2>
+                            <input type="text" name="username" id="username">
+                        </div>
+                        <div>
+                            <h2><label for="password"> Password: </label></h2>
+                            <input type="password" name="password" id ="password" value="">
+                        </div>
+                        <div>
+                            <button type="submit">Login</button>    
+                        </div>
+                    </form>
+                    
+                </div>
             </div>
         </div>        
     </body>

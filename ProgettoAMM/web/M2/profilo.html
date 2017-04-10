@@ -9,40 +9,65 @@
         <link rel="stylesheet" type="text/css" href="style.css" media="screen">
     </head>
     <body>
-        <div id="nav">
-            <nav>
-                <ul>
-                    <li> <p> <a href="descrizione.html">Ritorna alla pagina Descrizione</a></p></li> 
-                    <li> <p> <a href="login.html">Ritorna alla pagina Login</a></li>  
-                </ul>
-            </nav>
-        </div>        
-        <div>
-            <form action="profilo.php" method="post">
-                <label for="nome"> Nome Utente</label>
-                <input name="nome" type="text" id="nome" placeholder="Inserisci Nome" required/>
-                <br>
-                <label for="cognome"> Cognome Utente</label>
-                <input name="cognome" type="text" id="cognome" placeholder="Inserisci cognome" required/>
-                <br>
-                <label for="imgURL"> Inserisci URL immagine profilo</label>                       
-                <input type="url" name="imgURL" id="imgURL" required/>
-                <br>
-                <label for="frasepres"> Inserisci frase di presentazione:</label> <br>
-                <textarea name="frasepres" id="frasepres" rows="5" cols="25"></textarea>
-                <br>
-                <label>Inserisci data di nascita</label>
-                <input type="date" name="datanasc" id="datanasc">
-                <br>
-                <label for="password"> Password: </label>
-                <input type="password" name="password" id ="password" value="">
-                <br> 
-                <label for="cpassword"> Conferma Password: </label>
-                <input type="password" name="cpassword" id ="cpassword" >
-                <br> 
-                             
-                <button type="submit">Conferma e invia</button> 
-            </form>
-        </div>       
+        <div class="contenitore">
+            <div class="barraTop">
+                <div class="barraTop-logo">
+                    NerdBook
+                </div>
+                <div class="barraTop-navigazione" id="menu">
+                    <div class="barraTop-navigazione-link">
+                        <nav>
+                            <ul>
+                                <li> <p> <a href="profilo.html">Profilo</a></p></li> 
+                                <li> <p> <a href="bacheca.html">Bacheca</a></li>  
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="barraTop-navigazione-log">
+                        Login LogOut
+                    </div>
+                </div>
+            </div>
+            <div class="corpo">
+                <div class="corpo-social">
+                    <p>Persona</p>    
+                    <p>Gruppi</p>
+                    
+                </div>
+                <div class="corpo-profilo">
+                    <form action="profilo.php" method="post">
+                        <div>
+                            <label>Nome Utente</label>   
+                            <input name="nome" type="text" id="nome" placeholder="Inserisci Nome" required/>
+                        </div>
+                        <div>
+                            <label for="cognome">Cognome Utente</label>
+                            <input name="cognome" type="text" id="cognome" placeholder="Inserisci cognome" required/>
+                        </div>
+                        <div>
+                            <label for="imgURL">Inserisci URL immagine profilo</label>                       
+                             <input type="url" name="imgURL" id="imgURL" required/>
+                        </div>
+                        <div>
+                             <label for="frasepres"> Inserisci frase di presentazione:</label> <br>
+                            <textarea name="frasepres" id="frasepres" rows="5" cols="25"></textarea>
+                        </div>
+                        <div>
+                            <label>Inserisci data di nascita</label>
+                            <input type="date" name="datanasc" id="datanasc">
+                        </div>
+                        <div>
+                            <label for="password"> Password: </label>
+                            <input type="password" name="password" id ="password" value="">
+                        </div>
+                        <div>
+                            <label for="cpassword"> Conferma Password: </label>
+                            <input type="password" name="cpassword" id ="cpassword" >
+                        </div>
+                        <button type="submit" style="width: 100%">Conferma e invia</button> 
+                    </form>
+                </div>                
+            </div> 
+        </div>   
     </body>
 </html>
