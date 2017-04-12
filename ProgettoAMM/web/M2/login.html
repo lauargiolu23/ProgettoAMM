@@ -10,37 +10,33 @@
 
     </head>
     <body>
-        <div>
-            <nav>
-                <ul>
-                    <li><a href="descrizione.html">Ritorna alla pagina descrizione</a></li>
-                    <li><a href="profilo.html">Ritorna alla pagina profilo</a></li>
-                    <li><a href="bacheca.html">Ritorna alla pagina bacheca</a></li>
-                </ul>
-            </nav>
-        </div>
-        <div class="contenitore">
+        
+        <div class="login">
             <div>
-                    <h1>NerdBook</h1>
-            </div>
-            <div class="login">
-                <div>
-                    <form action="login.php" method="post">
-                        <div class="loginInput">
-                            <h2> <label for="username"> User name: </label></h2>
-                            <input type="text" name="username" id="username">
+                <form action="bacheca.html" method="post">
+                    <div class="profilo-riga">
+                        <div class="profilo-riga-label margin-bottom-2em"> 
+                            Username
                         </div>
-                        <div>
-                            <h2><label for="password"> Password: </label></h2>
+                        <div class="profilo-riga-input margin-bottom-2em">
+                            <input type="text" name="username" id ="username" value="">
+                        </div>
+                    </div>
+                    <div class="profilo-riga">
+                        <div class="profilo-riga-label margin-bottom-2em"> 
+                            Password
+                        </div>
+                        <div class="profilo-riga-input margin-bottom-2em">
                             <input type="password" name="password" id ="password" value="">
                         </div>
-                        <div>
-                            <button type="submit">Login</button>    
-                        </div>
-                    </form>
-                    
-                </div>
+                    </div>
+                    <div class="profilo-riga padding-left-10">
+                        <button class="button-login button" type="submit">Login</button> 
+                    </div>
+                </form>
+
             </div>
-        </div>        
+        </div>
+      
     </body>
 </html>

@@ -8,34 +8,85 @@
         <meta name="author" content="ArgioluLaura">
         <meta name="keywords" content="Nerdbook social network amicizie foto like.">
         <link rel="stylesheet" type="text/css" href="style.css" media="screen">
-    </head>
-    <body>
-        <div id="nav">
-            <nav>
-                <ul>
-                    <li><a href="descrizione.html">Ritorna alla pagina descrizione</a></li>                   
-                </ul>
-            </nav>
-        </div>   
-        <div id="divBody">
-            <h1>BACHECA</h1>
-            <div id="Postbacheca">
-                <div>
-                    <h2>Laura Argiolu</h2>
-                    <img alt="Foto Profilo" src="img/Foto1.jpg" width="150" height="150">
-                    <p> Foto di un gatto </p>
+    </head>    
+    <body>    
+        <div class="contenitore">
+            <div class="barraTop ">
+                <div class="barraTop-logo barraTopColor">
+                    NerdBook
                 </div>
-                <div>
-                    <h2>Aurora Russo</h2>
-                    <img alt="Foto Profilo" src="img/Foto2.png" width="150" height="150">
-                    <img alt="Foto allegata" src="img/Foto4.jpg" width="150" height="150">
+                <div class="barraTop-navigazione barraTopColor" >
+                        <nav id="menu">
+                            <ul>
+                                <li> <p> <a href="profilo.html">Profilo</a></p></li> 
+                                <li> <p> <a href="bacheca.html">Bacheca</a></li>  
+                            </ul>
+                        </nav>
                 </div>
-                 <div>
-                    <h2>Federico Brundu</h2>
-                    <img alt="Foto Profilo" src="img/Foto3.jpg" width="150" height="150">
-                    <a href="https://it-it.facebook.com/">Accedi a Facebook</a>
-                </div>     
+                <div class="barraTop-log barraTopColor">
+                    <a href="login.html">Login</a>
+                </div>
+            </div>
+            <div class="corpo">
+                <div class="corpo-social">
+                    <div id="persone">
+                        <p>PERSONE</p>
+                        <p>Laura Argiolu</p>
+                        <p>Aurora Russo</p>
+                        <p>Federico Brunde</p>
+                    </div>
+                    <div id="gruppi">
+                        <p>Gruppi</p> 
+                        <p>Gli Esploratori</p>
+                        <p>Gli Equilibristi</p>
+                        <p>I Paracadutisti</p>
+                    </div>
+                </div>
+
+                <div class="corpo-profilo">
+                    <div class="post">
+                        <div>
+                            <img class="imgProfile" alt="Foto Profilo" src="img/Foto1.jpg" width="150" height="150">
+                            <h2 class="nomeUtente">Laura Argiolu</h2>
+                        </div>
+                        <div class="post-contenuto-testo">
+                            <p>Foto di un gatto</p>
+                        </div>    
+                    </div>
+                    <div class="post">
+                        <img class="imgProfile" alt="Foto Profilo" src="img/Foto2.png" width="150" height="150">
+                        <h2 class="nomeUtente">Aurora Russo</h2>
+                        <div class="post-contenuto-img">
+                            <p>Foto di un gatto</p>
+                            <img align="center" class="pic-allegato" alt="Foto allegata" src="img/Foto4.jpg">
+                        </div>                           
+  
+                    </div>
+                    <div class="post">
+                        <img class="imgProfile" alt="Foto Profilo" src="img/Foto3.jpg" width="150" height="150">
+                        <h2 class="nomeUtente">Federico Brundu</h2>      
+                        <div class="post-contenuto-testo">
+                            <p>Venite a trovarmi nella mia pagina FB</p>
+                            <a href="https://it-it.facebook.com/">Accedi a Facebook</a>
+                        </div> 
+
+                    </div>     
+                </div>
             </div>
         </div>
     </body>
+    
 </html>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+   

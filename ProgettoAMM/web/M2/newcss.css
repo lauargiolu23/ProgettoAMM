@@ -303,6 +303,7 @@ ul#menu {
     }
 
     .corpo-social {
+        paddin: 0px;
         padding-left: 5%;
         padding-top: 3em;
         width: 95%;

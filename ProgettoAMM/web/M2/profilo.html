@@ -6,68 +6,108 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="ArgioluLaura">
         <meta name="keywords" content="Nerdbook social network amicizie foto like.">
+        
         <link rel="stylesheet" type="text/css" href="style.css" media="screen">
     </head>
     <body>
         <div class="contenitore">
-            <div class="barraTop">
-                <div class="barraTop-logo">
+            <div class="barraTop ">
+                <div class="barraTop-logo barraTopColor">
                     NerdBook
                 </div>
-                <div class="barraTop-navigazione" id="menu">
-                    <div class="barraTop-navigazione-link">
-                        <nav>
+                <div class="barraTop-navigazione barraTopColor" >
+                        <nav id="menu">
                             <ul>
                                 <li> <p> <a href="profilo.html">Profilo</a></p></li> 
                                 <li> <p> <a href="bacheca.html">Bacheca</a></li>  
                             </ul>
                         </nav>
-                    </div>
-                    <div class="barraTop-navigazione-log">
-                        Login LogOut
-                    </div>
+                </div>
+                <div class="barraTop-log barraTopColor">
+                    <a href="login.html">Login</a>
                 </div>
             </div>
             <div class="corpo">
                 <div class="corpo-social">
-                    <p>Persona</p>    
-                    <p>Gruppi</p>
-                    
+                    <div id="persone">
+                        <p>PERSONE</p>
+                        <p>Laura Argiolu</p>
+                        <p>Aurora Russo</p>
+                        <p>Federico Brunde</p>
+                    </div>
+                    <div id="gruppi">
+                        <p>Gruppi</p> 
+                        <p>Gli Esploratori</p>
+                        <p>Gli Equilibristi</p>
+                        <p>I Paracadutisti</p>
+                    </div>
                 </div>
                 <div class="corpo-profilo">
-                    <form action="profilo.php" method="post">
-                        <div>
-                            <label>Nome Utente</label>   
-                            <input name="nome" type="text" id="nome" placeholder="Inserisci Nome" required/>
+                    <form  id="corpo" action="profilo.php" method="post">
+                        <div class="profilo-riga">
+                            <div class="profilo-riga-label">  
+                                Nome Utente 
+                            </div>
+                            <div class="profilo-riga-input">
+                                <input name="nome" type="text" id="nome" placeholder="Inserisci Nome" required/>
+                            </div>
                         </div>
-                        <div>
-                            <label for="cognome">Cognome Utente</label>
-                            <input name="cognome" type="text" id="cognome" placeholder="Inserisci cognome" required/>
+                        <div class="profilo-riga">
+                            <div class="profilo-riga-label"> 
+                                Cognome Utente
+                            </div>
+                            <div class="profilo-riga-input">
+                                <input name="cognome" type="text" id="cognome" placeholder="Inserisci cognome" required/>
+                        
+                            </div>
                         </div>
-                        <div>
-                            <label for="imgURL">Inserisci URL immagine profilo</label>                       
-                             <input type="url" name="imgURL" id="imgURL" required/>
+                        <div class="profilo-riga">
+                            <div class="profilo-riga-label"> 
+                                Inserisci URL immagine profilo 
+                            </div>
+                            <div class="profilo-riga-input">
+                                <input type="url" name="imgURL" id="imgURL" required/>
+                        
+                            </div>
                         </div>
-                        <div>
-                             <label for="frasepres"> Inserisci frase di presentazione:</label> <br>
-                            <textarea name="frasepres" id="frasepres" rows="5" cols="25"></textarea>
+                        <div class="profilo-riga">
+                            <div class="profilo-riga-label"> 
+                                Inserisci frase di presentazione:
+                            </div>
+                            <div class="profilo-riga-input">
+                                <textarea name="frasepres" id="frasepres" rows="5" cols="25"></textarea>
+                            </div>
+                        </div>   
+                        <div class="profilo-riga">
+                            <div class="profilo-riga-label"> 
+                                Inserisci data di nascita
+                            </div>
+                            <div class="profilo-riga-input">
+                                <input type="date" name="datanasc" id="datanasc">
+                            </div>
                         </div>
-                        <div>
-                            <label>Inserisci data di nascita</label>
-                            <input type="date" name="datanasc" id="datanasc">
+                        <div class="profilo-riga">
+                            <div class="profilo-riga-label"> 
+                                Password
+                            </div>
+                            <div class="profilo-riga-input">
+                                <input type="password" name="password" id ="password" value="">
+                            </div>
                         </div>
-                        <div>
-                            <label for="password"> Password: </label>
-                            <input type="password" name="password" id ="password" value="">
+                        <div class="profilo-riga">
+                            <div class="profilo-riga-label"> 
+                                Conferma Password
+                            </div>
+                            <div class="profilo-riga-input">
+                                <input type="password" name="cpassword" id ="cpassword" >
+                            </div>
                         </div>
-                        <div>
-                            <label for="cpassword"> Conferma Password: </label>
-                            <input type="password" name="cpassword" id ="cpassword" >
+                        <div class="profilo-riga padding-left-10">
+                            <button class="button-profilo button" type="submit">Conferma e invia</button> 
                         </div>
-                        <button type="submit" style="width: 100%">Conferma e invia</button> 
                     </form>
-                </div>                
-            </div> 
-        </div>   
+                </div> 
+            </div>
+        </div>
     </body>
 </html>
