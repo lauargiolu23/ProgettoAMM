@@ -12,7 +12,7 @@ package amm.nerdbook.Classi;
 public class UtentiRegistrati {
     
     private int id;
-    private String nickname;
+    private String username;
     private String nome;
     private String cognome;
     private String imgProfilo;
@@ -23,7 +23,7 @@ public class UtentiRegistrati {
     
     public UtentiRegistrati(){
         id = 0;
-        nickname = "";
+        username = "";
         nome = "";
         cognome = "";
         imgProfilo = "";
@@ -42,11 +42,11 @@ public class UtentiRegistrati {
     }
     
     public String getNickname(){
-        return nickname;
+        return username;
     }
     
-    public void setNickname(String nickname){
-        this.nickname = nickname;                
+    public void Username(String username){
+        this.username = username;                
     }
 
     public String getNome(){

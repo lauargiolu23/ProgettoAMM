@@ -28,7 +28,7 @@ public class UtentiRegistratiFactory {
         //Laura Argiolu
         UtentiRegistrati utente1 = new UtentiRegistrati();
         utente1.setId(0);
-        utente1.setNickname("Lau23");
+        utente1.Username("Lau23");
         utente1.setNome("Laura");
         utente1.setCognome("Argiolu");
         utente1.setImgProfilo("img/Foto1.jpg");
@@ -37,47 +37,57 @@ public class UtentiRegistratiFactory {
         
         //Aurora Russo
         UtentiRegistrati utente2 = new UtentiRegistrati();
-        utente1.setId(1);
-        utente1.setNickname("Aury92");
-        utente1.setNome("Aurora");
-        utente1.setCognome("Russo");
-        utente1.setImgProfilo("img/Foto2.jpg");
-        utente1.setDataNasc("03/08/1992");
-        utente1.setPassw("1011");
+        utente2.setId(1);
+        utente2.Username("Aury92");
+        utente2.setNome("Aurora");
+        utente2.setCognome("Russo");
+        utente2.setImgProfilo("img/Foto2.jpg");
+        utente2.setDataNasc("03/08/1992");
+        utente2.setPassw("1011");
         
         //Federico Brundu
         UtentiRegistrati utente3 = new UtentiRegistrati();
-        utente1.setId(2);
-        utente1.setNickname("Fede89");
-        utente1.setNome("Federico");
-        utente1.setCognome("Brundu");
-        utente1.setImgProfilo("img/Foto3.jpg");
-        utente1.setDataNasc("01/07/1989");
-        utente1.setPassw("0000");
-
+        utente3.setId(2);
+        utente3.Username("Fede89");
+        utente3.setNome("Federico");
+        utente3.setCognome("Brundu");
+        utente3.setImgProfilo("img/Foto3.jpg");
+        utente3.setDataNasc("01/07/1989");
+        utente3.setPassw("0000");
+        
+        //Utente incompleto
+        UtentiRegistrati utente4 = new UtentiRegistrati();
+        utente4.setId(3);
+        utente4.Username("");
+        utente4.setNome("");
+        utente4.setCognome("");
+        utente4.setImgProfilo(null);
+        utente4.setDataNasc("01/07/1999");
+        utente4.setPassw("0000");
+     
         listaUtenti.add(utente1);
         listaUtenti.add(utente2);
         listaUtenti.add(utente3);
-        
+        listaUtenti.add(utente4);
     }
 
-        public UtentiRegistrati getUtenteById(int id) {
-            for (UtentiRegistrati utente : this.listaUtenti) {
-                if (utente.getId() == id) {
-                    return utente;
-                }
+    public UtentiRegistrati getUtenteById(int id) {
+        for (UtentiRegistrati utente : this.listaUtenti) {
+            if (utente.getId() == id) {
+                return utente;
             }
-            return null;
         }
+        return null;
+    }
     
-        public int getIdByUserAndPassword(String user, String password){
-            for(UtentiRegistrati utente : this.listaUtenti){
-                if(utente.getNome().equals(user) && utente.getPassw().equals(password)){
-                    return utente.getId();
-                }
+    public int getIdByUserAndPassword(String user, String password){
+        for(UtentiRegistrati utente : this.listaUtenti){
+            if(utente.getNome().equals(user) && utente.getPassw().equals(password)){
+                return utente.getId();
             }
-            return -1;
         }
+        return -1;
+    }
         
 }
 

@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class PostFactory {
     
-   private static PostFactory singleton;
+    private static PostFactory singleton;
 
     public static PostFactory getInstance() {
         if (singleton == null) {
@@ -34,6 +34,7 @@ public class PostFactory {
         post1.setContent("Ciao, sono un gatto bellisso");
         post1.setId(0);
         post1.setUser(utenteFactory.getUtenteById(0));
+        post1.setPostType(Post.Type.TEXT);
 
         Post post2 = new Post();
         post2.setContent("img/Foto4.jpg");
@@ -69,6 +70,22 @@ public class PostFactory {
         for (Post post : this.listaPost) {
             if (post.getUser().equals(user)) {
                 listaPost.add(post);
+            }
+        }
+        return listaPost;
+    }
+    
+    public List getPostList(Gruppi gr) {
+        //prendo un gruppo
+        //in ogni gruppo ci sono iscritti
+        //abbiamo deciso che se clicki su gruppo vedi i post degli utenti inscritti a quel gruppo
+        //cicli gli utenti del gruppo e guardi se il post è stato scritto da uno del gruppo
+        List<Post> listaPost = new ArrayList<Post>();
+        for(UtentiRegistrati item : gr.getIscritti()){
+            for (Post post : this.listaPost) {
+                if (post.getId() == (item.getId())) {
+                    listaPost.add(post);
+                }
             }
         }
         return listaPost;
