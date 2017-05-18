@@ -31,7 +31,7 @@ public class PostFactory {
 
         //Creazione Post
         Post post1 = new Post();
-        post1.setContent("Ciao, sono un gatto bellisso");
+        post1.setContent("Ciao, sono un gatto bellissimo");
         post1.setId(0);
         post1.setUser(utenteFactory.getUtenteById(0));
         post1.setPostType(Post.Type.TEXT);
@@ -78,7 +78,7 @@ public class PostFactory {
     public List getPostList(Gruppi gr) {
         //prendo un gruppo
         //in ogni gruppo ci sono iscritti
-        //abbiamo deciso che se clicki su gruppo vedi i post degli utenti inscritti a quel gruppo
+        //ho deciso che se clicki su gruppo vedi i post degli utenti inscritti a quel gruppo
         //cicli gli utenti del gruppo e guardi se il post è stato scritto da uno del gruppo
         List<Post> listaPost = new ArrayList<Post>();
         for(UtentiRegistrati item : gr.getIscritti()){

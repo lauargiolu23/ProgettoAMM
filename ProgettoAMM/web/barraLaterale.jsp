@@ -1,0 +1,27 @@
+<%-- 
+    Document   : barraLaterale
+    Created on : 12-mag-2017, 14.24.38
+    Author     : Argio
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<!DOCTYPE html>
+<div class="corpo-social">
+    <div id="persone">
+        <p>PERSONE</p>
+        <c:forEach var="utenti" items="${utenti}">
+        ///
+        <a href="Bacheca?user=${utenti.id}">${utenti.nome}${utenti.cognome}</a>  
+        </c:forEach>
+    </div>
+    <div id="gruppi">
+        <p>Gruppi</p> 
+        <c:forEach var="gruppi" items="${gruppi}">
+        ///
+        <p>${gruppi.nome}</p> 
+        </c:forEach>
+        
+    </div>
+</div>

@@ -5,6 +5,8 @@
  */
 package amm.nerdbook.Classi;
 import java.util.ArrayList; 
+import java.util.HashSet;
+import java.util.Set;
 /**
  *
  * @author Argio
@@ -32,8 +34,10 @@ public class UtentiRegistratiFactory {
         utente1.setNome("Laura");
         utente1.setCognome("Argiolu");
         utente1.setImgProfilo("img/Foto1.jpg");
+        utente1.setFrsasePres("Il gatto è morto");
         utente1.setDataNasc("23/08/1995");
-        utente1.setPassw("123");
+        utente1.setPassword("123");
+        
         
         //Aurora Russo
         UtentiRegistrati utente2 = new UtentiRegistrati();
@@ -42,8 +46,9 @@ public class UtentiRegistratiFactory {
         utente2.setNome("Aurora");
         utente2.setCognome("Russo");
         utente2.setImgProfilo("img/Foto2.jpg");
+        utente2.setFrsasePres("Il gatto è vivo");
         utente2.setDataNasc("03/08/1992");
-        utente2.setPassw("1011");
+        utente2.setPassword("1011");
         
         //Federico Brundu
         UtentiRegistrati utente3 = new UtentiRegistrati();
@@ -52,18 +57,20 @@ public class UtentiRegistratiFactory {
         utente3.setNome("Federico");
         utente3.setCognome("Brundu");
         utente3.setImgProfilo("img/Foto3.jpg");
+        utente3.setFrsasePres("Il gatto è brutto");
         utente3.setDataNasc("01/07/1989");
-        utente3.setPassw("0000");
+        utente3.setPassword("0000");
         
         //Utente incompleto
         UtentiRegistrati utente4 = new UtentiRegistrati();
         utente4.setId(3);
-        utente4.Username("");
-        utente4.setNome("");
-        utente4.setCognome("");
-        utente4.setImgProfilo(null);
-        utente4.setDataNasc("01/07/1999");
-        utente4.setPassw("0000");
+        utente4.Username("incomp23");
+        utente4.setNome("Inco");
+        utente4.setCognome("Rinco");
+        utente4.setImgProfilo("www.Rincoinco.pino");
+        utente4.setFrsasePres("");
+        utente4.setDataNasc("01/02/2099");
+        utente4.setPassword("0000");
      
         listaUtenti.add(utente1);
         listaUtenti.add(utente2);
@@ -82,7 +89,7 @@ public class UtentiRegistratiFactory {
     
     public int getIdByUserAndPassword(String user, String password){
         for(UtentiRegistrati utente : this.listaUtenti){
-            if(utente.getNome().equals(user) && utente.getPassw().equals(password)){
+            if(utente.getUsername().equals(user) && utente.getPassword().equals(password)){
                 return utente.getId();
             }
         }

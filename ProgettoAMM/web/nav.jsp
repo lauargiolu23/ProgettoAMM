@@ -7,8 +7,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <nav>
     <ul>
-        <li <c:if test="${page=='profilo'}">class="active"</c:if>><a href="profilo.html">Profilo</a></p></li> 
-        <li <c:if test="${page=='bacheca'}">class="active"</c:if>><a href="bacheca.html">Bacheca</a></li>  
+        <li> <a href="profilo.html">Profilo</a></p></li> 
+        <li> <a href="bacheca.html">Bacheca</a></li>  
     </ul>
 </nav>
       

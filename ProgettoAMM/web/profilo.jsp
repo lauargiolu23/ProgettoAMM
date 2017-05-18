@@ -5,13 +5,6 @@
 --%>
 <%@page import="amm.nerdbook.Classi.UtentiRegistratiFactory"%>
 <%@page import="amm.nerdbook.Classi.UtentiRegistrati"%>
-<%
-    UtentiRegistrati utente = new UtentiRegistrati();
-    
-    utente.setNome("Laura");
-    utente.setCognome("Argiolu");
-%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -26,22 +19,7 @@
     </head>
     <body>
         <div class="contenitore">
-            <div class="barraTop ">
-                <div class="barraTop-logo barraTopColor">
-                    NerdBook
-                </div>
-                <div class="barraTop-navigazione barraTopColor" >
-                        <nav id="menu">
-                            <ul>
-                                <li> <p> <a href="profilo.html">Profilo</a></p></li> 
-                                <li> <p> <a href="bacheca.html">Bacheca</a></li>  
-                            </ul>
-                        </nav>
-                </div>
-                <div class="barraTop-log barraTopColor">
-                    <a href="login.html">Login</a>
-                </div>
-            </div>
+            <jsp:include page="header.jsp"/>
             <div class="corpo">
                 <div class="corpo-social">
                     <div id="persone">
@@ -58,13 +36,13 @@
                     </div>
                 </div>
                 <div class="corpo-profilo">
-                    <form  id="corpo" action="profilo.php" method="post">
+                    <form  id="corpo" action="ModificaDatiProfilo" method="post">
                         <div class="profilo-riga">
                             <div class="profilo-riga-label">  
                                 Nome Utente
                             </div>
                             <div class="profilo-riga-input">
-                                <input name="nome" type="text" id="nome" placeholder="Inserisci Nome" value="<% out.print(utente.getNome()); %>" required>     
+                                <input name="nome" type="text" id="nome" placeholder="Inserisci Nome" value="${datiProfilo.nome}" required>     
                             </div>
                         </div>
                         <div class="profilo-riga">
@@ -72,7 +50,7 @@
                                 Cognome Utente
                             </div>
                             <div class="profilo-riga-input">
-                                <input name="cognome" type="text" id="cognome" placeholder="Inserisci cognome" value="<% out.print(utente.getCognome()); %>" required>  
+                                <input name="cognome" type="text" id="cognome" placeholder="Inserisci cognome" value="${datiProfilo.cognome}" required>  
                         
                             </div>
                         </div>
@@ -81,7 +59,7 @@
                                 Inserisci URL immagine profilo 
                             </div>
                             <div class="profilo-riga-input">
-                                <input type="url" name="imgURL" id="imgURL" required/>
+                                <input type="url" name="imgURL" id="imgURL" value="${datiProfilo.imgProfilo}" required/>
                         
                             </div>
                         </div>
@@ -90,7 +68,7 @@
                                 Inserisci frase di presentazione:
                             </div>
                             <div class="profilo-riga-input">
-                                <textarea name="frasepres" id="frasepres" rows="5" cols="25"></textarea>
+                                <textarea name="frasepres" id="frasepres" rows="5" cols="25">${datiProfilo.frasePres}</textarea>
                             </div>
                         </div>   
                         <div class="profilo-riga">
@@ -98,7 +76,7 @@
                                 Inserisci data di nascita
                             </div>
                             <div class="profilo-riga-input">
-                                <input type="date" name="datanasc" id="datanasc">
+                                <input type="date" name="datanasc" id="datanasc" value="${datiProfilo.dataNasc}">
                             </div>
                         </div>
                         <div class="profilo-riga">
@@ -106,7 +84,7 @@
                                 Password
                             </div>
                             <div class="profilo-riga-input">
-                                <input type="password" name="password" id ="password" value="">
+                                <input type="password" name="password" id ="password" value="${datiProfilo.password}">
                             </div>
                         </div>
                         <div class="profilo-riga">
@@ -114,12 +92,13 @@
                                 Conferma Password
                             </div>
                             <div class="profilo-riga-input">
-                                <input type="password" name="cpassword" id ="cpassword" >
+                                <input type="password" name="cpassword" id ="cpassword" value="${datiProfilo.password}" >
                             </div>
                         </div>
                         <div class="profilo-riga padding-left-10">
                             <button class="button-profilo button" type="submit">Conferma e invia</button> 
                         </div>
+                            
                     </form>
                 </div> 
             </div>

@@ -18,7 +18,7 @@ public class UtentiRegistrati {
     private String imgProfilo;
     private String frasePres;
     private String dataNasc;
-    private String passw;
+    private String password;
 
     
     public UtentiRegistrati(){
@@ -29,7 +29,7 @@ public class UtentiRegistrati {
         imgProfilo = "";
         frasePres = "";
         dataNasc = "";
-        passw = "";
+        password = "";
         
     }
     
@@ -41,7 +41,7 @@ public class UtentiRegistrati {
         this.id = id;                
     }
     
-    public String getNickname(){
+    public String getUsername(){
         return username;
     }
     
@@ -92,12 +92,12 @@ public class UtentiRegistrati {
                 
     }
     
-    public String getPassw(){
-        return passw;
+    public String getPassword(){
+        return password;
     }
     
-    public void setPassw(String passw){
-        this.passw = passw;
+    public void setPassword(String password){
+        this.password = password;
                 
     }
  

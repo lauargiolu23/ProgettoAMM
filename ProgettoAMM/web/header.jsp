@@ -5,8 +5,19 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<header>
-    <div id="title">
-        <h1> Nerdbook </h1> 
+<div class="barraTop ">
+    <div class="barraTop-logo barraTopColor">
+        NerdBook
     </div>
-</header>
+    <div class="barraTop-navigazione barraTopColor" >
+            <nav id="menu">
+                <ul>
+                    <li> <p> <a href="profilo.html">Profilo</a></p></li> 
+                    <li> <p> <a href="bacheca.html">Bacheca</a></li>  
+                </ul>
+            </nav>
+    </div>
+    <div class="barraTop-log barraTopColor">
+        <a href="Login">Login</a>
+    </div>
+</div>

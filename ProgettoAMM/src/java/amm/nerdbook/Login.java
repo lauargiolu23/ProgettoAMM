@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import amm.nerdbook.Classi.UtentiRegistrati;
 
 /**
  *
@@ -33,6 +34,7 @@ public class Login extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+       
 
         //Apertura della sessione e riprende
         HttpSession session = request.getSession();
@@ -69,14 +71,13 @@ public class Login extends HttpServlet {
                     session.setAttribute("loggedIn", true);
                     session.setAttribute("loggedUserID", loggedUserID);
                     //ci devo aggiungere qualcuno
-                    
-                    if(UtentiRegistratiFactory.getInstance().getUtenteById(loggedUserID).getNome().equals("") ||
-                            UtentiRegistratiFactory.getInstance().getUtenteById(loggedUserID).getCognome().equals("") ||
-                            UtentiRegistratiFactory.getInstance().getUtenteById(loggedUserID).getImgProfilo().equals("") ||
-                            UtentiRegistratiFactory.getInstance().getUtenteById(loggedUserID).getFrasePres().equals("") )
+                    UtentiRegistrati utente = UtentiRegistratiFactory.getInstance().getUtenteById(loggedUserID);
+                    if(utente.getNome().equals("") ||
+                        utente.getCognome().equals("") ||
+                        utente.getImgProfilo().equals("") ||
+                        utente.getFrasePres().equals(""))
                     {
-                    
-                        request.getRequestDispatcher("profilo.jsp").forward(request, response);
+                        request.getRequestDispatcher("Profilo").forward(request, response);
                         return;
                     }else{
                         request.getRequestDispatcher("bacheca.jsp").forward(request, response);

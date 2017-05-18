@@ -1,0 +1,334 @@
+body{
+    font-family: Helvetica,Arial, sans-serif 12px;
+    margin: 0px;
+    padding: 0px;
+}
+h1{
+    margin-top: 0px; 
+    color: #A5BFAE;
+    font-family: Helvetica,Arial, sans-serif;
+    font-weight: bold;
+}
+
+h2{
+    margin-top: 0px;                
+    color: #353334;
+    font-family: Helvetica,Arial, sans-serif;
+    font-weight: bold;
+}
+
+h3{
+    margin-top: 0px; 
+    color: #353334;
+    font-family: Helvetica,Arial, sans-serif;
+    font-weight: bold;
+}
+
+a:link{
+    font-size: 14px;
+    text-decoration: none;
+    color: #1E2686;
+}
+
+#nav a:link{
+    
+    font-size: 25px;
+    text-decoration: none;
+    color: #1E2686;
+ }
+ #nav a:hover{
+    font-size: 150%;
+    background-color: #A5BFAE;
+    text-decoration: underline;
+  
+}
+
+#nav a:hover {
+    background-color: #A5BFAE;
+    text-decoration: underline;
+    font-size: 150%;
+}
+
+a:visited{
+    font-size: 25px;
+    text-decoration: none;
+    color: #1E2686;
+}
+
+a:hover {
+    background-color: #A5BFAE;
+    font-size: 150%;
+}
+
+a:active {
+    color: #F62F2F;
+  
+    
+}
+
+header{
+    font: 40px/50px Helvetica, Arial, sans-serif;
+    background-color: #121212;
+    text-align: center;
+    margin-bottom: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,.2);
+
+    box-shadow: 10px 10px 5px #888888;
+}
+
+.contenitore {
+    widht:100%;
+    top: 0px;
+
+}
+.barraTop {
+    widht: 80%;
+    margin: auto;
+    color: #FFFFFF;
+    display: inline;
+    margin: 0px;
+    padding: 0px;
+/*    background-color: cornflowerblue;
+    color: #FFFFFF;
+    display: inline;*/
+}
+.barraTopColor {
+    background-color: #717171;
+    border-bottom: #353334 solid 2px;
+    height: 40px;
+}
+
+.barraTop-logo{
+    width: 20%;
+    float: left;
+    padding: 0px;
+    font-size: 30px;
+    text-align: center;
+    margin: 0px;
+    padding-top: 0.5em;
+    padding-bottom: 1px;
+    
+}
+.barraTop-navigazione {
+    width: 50%;
+    float: left; 
+    margin: 0px;
+    padding: 0px;
+    padding-bottom: 16px;
+}
+.barraTop-log{
+    width: 25%;
+    float: left; 
+    margin: 0px;
+    padding-top: 1em;
+    text-align: right;
+    padding-right: 5%;
+    
+}
+ul#menu {
+    list-style: none;
+    margin:0 auto;
+    width: 400px;
+    
+}
+
+#menu li {
+    float: left;
+    list-style-type: none;
+}
+
+#menu li a {
+  color: white;
+  font-weight: bold;
+  display:block;
+  width: 200px;
+  text-align: center;
+  text-decoration: none;
+}
+
+#menu li a:hover, #menu li a.active {
+  background-color: #FFFFFF;
+  color: dodgerblue;
+}
+
+.corpo {
+    width: 100%;
+}
+
+.corpo-social {
+    paddin: 0px;
+    padding-left: 5%;
+    padding-top: 3em;
+    width: 15%;
+    float: left;
+    text-align: left;
+    border-right: solid gainsboro 2px;
+    min-height: 100%;
+}
+
+.corpo-profilo {
+    margin-left: 0%;
+    margin-left: 0%;
+    margin-top: 0%;
+    float: left;
+    width: 70%;
+    margin-right: -2px;
+    padding: 5%
+}
+
+.post{
+    margin-left: 8%;
+    min-height: 220px;
+    width: 70%;
+    border: solid #717171 2px;
+    background-color: whitesmoke;
+    box-shadow: 0 0 1px rgba(0,0,0,0.1);
+    border-radius: 3px;
+    word-wrap:break-word;
+    margin-bottom: 5px;
+}
+.nomeUtente{
+    margin-top: 1%;
+    color: #010148;
+    font: 18px "Helvetica", Arial, sans-serif;
+    font-weight: bold;
+    margin-left: 0%;
+    padding: 4%;
+    padding-left: 20%;
+    padding-top: 4%;
+}
+.imgProfile{
+    height: 68px;
+    width: 77px;
+    padding-left: 4%;
+    padding-top: 3%;
+    float:left;
+    height: 68px;
+}
+.pic-allegato{
+    height: 150px;
+    width: 150px;
+}
+
+.post-contenuto-testo{
+    padding: 1em 2em 1em;
+    text-align: left;
+    font-size: 13px;
+}
+.post-contenuto-img {
+    padding: 1em 2em 1em;
+    text-align: left;
+    font-size: 13px;
+    position:relative;
+}
+
+.post-contenuto-img img {
+    margin: 0 auto;
+    border-radius: 3px;
+}
+#persone p, #gruppi p{
+    padding: 8px;
+}
+#frasepres textarea{
+    resize: none;
+}
+
+.profilo-riga{
+    width:100%;
+}
+.profilo-riga-label{
+    float:left;
+    width:35%;
+    margin:0px;
+    padding: 0px;
+    padding-left: 10%;
+}
+.profilo-riga-input{
+    float:right;
+    width:55%;
+    margin:0px;
+    padding: 0px;
+    padding-bottom: 0.5em;
+}
+
+.button-profilo {
+    width:50%;
+    margin: 0 auto;
+}
+.button-login {
+    width:75%;
+    margin: 0 auto;
+}
+
+.button{
+    background-color: activeborder;
+    color: #010148;
+    border-radius: 5px;
+}
+
+.padding-left-10{
+    padding-left: 10%; 
+}
+.margin-bottom-2em {
+    margin-bottom: 2em; 
+}
+
+.barraTop-log a{
+    color: #FFFFFF;
+}
+.barraTop-log a :hover{
+    color: darkgray;
+}
+
+.login {
+    width: 30%;
+    margin: 0 auto;
+    border: solid #717171 2px;
+    border-radius: 25px;
+    margin-top: 10%;
+    padding: 3em;
+    background-color: whitesmoke;
+}
+
+@media (min-width: 1024px) and (max-width: 4096)
+{
+
+    
+}
+
+ @media only screen and (max-width: 720px)
+{
+    .corpo {
+        width: 100%;
+    }
+
+    .corpo-social {
+        padding-left: 5%;
+        padding-top: 3em;
+        width: 95%;
+        float: left;
+        text-align: left;
+        border-right: solid gainsboro 2px;
+        min-height: 100%;
+        text-align: center;
+    }
+
+    .corpo-profilo {
+        margin-left: 0%;
+        margin-left: 0%;
+        margin-top: 0%;
+        float: left;
+        width: 90%;
+        margin-right: -2px;
+        padding: 5%
+    }
+     @media (max-width: 480px)
+    {
+        input#username{
+            display: inline-block;
+            
+            
+        }    
+    }
+    
+}  
