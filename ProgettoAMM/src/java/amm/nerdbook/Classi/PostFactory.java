@@ -31,7 +31,9 @@ public class PostFactory {
 
         //Creazione Post
         Post post1 = new Post();
-        post1.setContent("Ciao, sono un gatto bellissimo");
+        post1.setContent("Solo il nostro gusto individuale, alla fine, riesce davvero a creare uno stile o una moda,"
+                + " poiché non si preoccupa di seguire la scia degli altri. Perciò, indipendentemente dall’oggetto che il gusto individuale"
+                + " ci fa scegliere, sia esso una scala a pioli oppure una cesta di vimini, alla base ci deve essere una scelta profondamente personale");
         post1.setId(0);
         post1.setUser(utenteFactory.getUtenteById(0));
         post1.setPostType(Post.Type.TEXT);

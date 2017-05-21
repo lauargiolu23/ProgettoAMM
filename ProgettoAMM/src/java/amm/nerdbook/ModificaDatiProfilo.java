@@ -56,7 +56,6 @@ public class ModificaDatiProfilo extends HttpServlet {
 
 
         
-                          //Nome cognome imgURL frasepres atanasc password cpassword
 
         
     }

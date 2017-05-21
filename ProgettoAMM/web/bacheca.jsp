@@ -25,7 +25,7 @@
                 <jsp:include page="barraLaterale.jsp"/>
                 
                 <div class="corpo-profilo">
-                    <c:forEach var="post" items="${post}">
+                    <c:forEach var="post" items="${posts}">
                         
                     <div class="post">
                         <img class="imgProfile" alt="Foto Profilo" src="${utente.imgProfilo}" width="150" height="150">

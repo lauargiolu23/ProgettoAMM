@@ -34,7 +34,7 @@ public class UtentiRegistratiFactory {
         utente1.setNome("Laura");
         utente1.setCognome("Argiolu");
         utente1.setImgProfilo("img/Foto1.jpg");
-        utente1.setFrsasePres("Il gatto è morto");
+        utente1.setFrsasePres("Non mi scoraggio perché ogni tentativo sbagliato scartato è un altro passo avanti.");
         utente1.setDataNasc("23/08/1995");
         utente1.setPassword("123");
         
@@ -46,7 +46,7 @@ public class UtentiRegistratiFactory {
         utente2.setNome("Aurora");
         utente2.setCognome("Russo");
         utente2.setImgProfilo("img/Foto2.jpg");
-        utente2.setFrsasePres("Il gatto è vivo");
+        utente2.setFrsasePres("Il futuro appartiene a coloro che credono nella bellezza dei propri sogni");
         utente2.setDataNasc("03/08/1992");
         utente2.setPassword("1011");
         
@@ -57,7 +57,7 @@ public class UtentiRegistratiFactory {
         utente3.setNome("Federico");
         utente3.setCognome("Brundu");
         utente3.setImgProfilo("img/Foto3.jpg");
-        utente3.setFrsasePres("Il gatto è brutto");
+        utente3.setFrsasePres("Il segreto per andare avanti è iniziare");
         utente3.setDataNasc("01/07/1989");
         utente3.setPassword("0000");
         
@@ -65,11 +65,11 @@ public class UtentiRegistratiFactory {
         UtentiRegistrati utente4 = new UtentiRegistrati();
         utente4.setId(3);
         utente4.Username("incomp23");
-        utente4.setNome("Inco");
-        utente4.setCognome("Rinco");
-        utente4.setImgProfilo("www.Rincoinco.pino");
+        utente4.setNome("ADALGISO");
+        utente4.setCognome("");
+        utente4.setImgProfilo("");
         utente4.setFrsasePres("");
-        utente4.setDataNasc("01/02/2099");
+        utente4.setDataNasc("01/02/1992");
         utente4.setPassword("0000");
      
         listaUtenti.add(utente1);

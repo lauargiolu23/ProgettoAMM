@@ -5,22 +5,24 @@
  */
 package amm.nerdbook;
 
+import amm.nerdbook.Classi.Post;
+import amm.nerdbook.Classi.PostFactory;
+import amm.nerdbook.Classi.UtentiRegistrati;
 import amm.nerdbook.Classi.UtentiRegistratiFactory;
-        
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import amm.nerdbook.Classi.UtentiRegistrati;
 
 /**
  *
  * @author Argio
  */
-public class Login extends HttpServlet {
+public class Bacheca extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,74 +36,30 @@ public class Login extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-       
-
-        //Apertura della sessione e riprende
+        
+        // sessione e riprende
         HttpSession session = request.getSession();
         
         //Se è impostato il parametro GET logout, distrugge la sessione
         if(request.getParameter("logout")!=null)
         {
             session.invalidate();
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+            request.getRequestDispatcher("bacheca.jsp").forward(request, response);
             return;
         }
         
-        //Se esiste un attributo di sessione loggedIn e questo vale true
-        //(Utente già loggato)
-        if (session.getAttribute("loggedIn") != null &&
-            session.getAttribute("loggedIn").equals(true)) 
-        {
+        //prendo valore idUtenteLoggato in sessione
+        int id = (int)session.getAttribute("loggedUserID");
+        
+        UtentiRegistrati utente = UtentiRegistratiFactory.getInstance().getUtenteById(id);
+        List<Post> postsUtente = PostFactory.getInstance().getPostList(utente);
+        request.setAttribute("posts", postsUtente);        
+        request.setAttribute("utente",utente );
+        
+        request.getRequestDispatcher("bacheca.jsp").forward(request, response);
 
-            request.getRequestDispatcher("Bacheca").forward(request, response);
-            return;
         
-        //Se l'utente non è loggato mi manda nella pag login.jsp
-        } else {
-            String username = request.getParameter("username");
-            String password = request.getParameter("password");
-        
-            if (username != null && password != null) 
-            {   ///controlla utente logged
-                int loggedUserID = UtentiRegistratiFactory.getInstance().getIdByUserAndPassword(username, password);
-                
-                //se l'utente è valido...
-                if(loggedUserID != -1)
-                {
-                    session.setAttribute("loggedIn", true);
-                    session.setAttribute("loggedUserID", loggedUserID);
-                    //ci devo aggiungere qualcuno
-                    UtentiRegistrati utente = UtentiRegistratiFactory.getInstance().getUtenteById(loggedUserID);
-                    if(utente.getNome().equals("") ||
-                        utente.getCognome().equals("") ||
-                        utente.getImgProfilo().equals("") ||
-                        utente.getFrasePres().equals(""))
-                    {
-                        request.getRequestDispatcher("Profilo").forward(request, response);
-                        return;
-                    }else{
-                        request.getRequestDispatcher("Bacheca").forward(request, response);
-                        return;
-                    }
-                } 
-                else { //altrimenti se la coppia user/pass non è valida (id==-1)
-                    
-                //ritorno al form del login informandolo che i dati non sono validi
-                request.setAttribute("invalidData", true);
-                request.getRequestDispatcher("login.jsp").forward(request, response);
-                return;
-                }
-            }  
-        }    
-    
-        /*
-          Se non si verifica nessuno degli altri casi, 
-          tentativo di accesso diretto alla servlet Login -> reindirizzo verso 
-          il form di login.
-        */
-        request.getRequestDispatcher("login.jsp").forward(request, response);
     }
-
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -141,5 +99,5 @@ public class Login extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-   
+
 }

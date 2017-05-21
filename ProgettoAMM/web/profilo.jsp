@@ -39,7 +39,7 @@
                     <form  id="corpo" action="ModificaDatiProfilo" method="post">
                         <div class="profilo-riga">
                             <div class="profilo-riga-label">  
-                                Nome Utente
+                            <label>Nome Utente:</label>
                             </div>
                             <div class="profilo-riga-input">
                                 <input name="nome" type="text" id="nome" placeholder="Inserisci Nome" value="${datiProfilo.nome}" required>     
@@ -47,25 +47,23 @@
                         </div>
                         <div class="profilo-riga">
                             <div class="profilo-riga-label"> 
-                                Cognome Utente
+                            <label>Cognome Utente:</label>
                             </div>
                             <div class="profilo-riga-input">
                                 <input name="cognome" type="text" id="cognome" placeholder="Inserisci cognome" value="${datiProfilo.cognome}" required>  
-                        
                             </div>
                         </div>
                         <div class="profilo-riga">
                             <div class="profilo-riga-label"> 
-                                Inserisci URL immagine profilo 
+                                <label>Inserisci URL immagine profilo:</label>     
                             </div>
                             <div class="profilo-riga-input">
                                 <input type="url" name="imgURL" id="imgURL" value="${datiProfilo.imgProfilo}" required/>
-                        
                             </div>
                         </div>
                         <div class="profilo-riga">
                             <div class="profilo-riga-label"> 
-                                Inserisci frase di presentazione:
+                                <label>Inserisci frase di presentazione:</label>     
                             </div>
                             <div class="profilo-riga-input">
                                 <textarea name="frasepres" id="frasepres" rows="5" cols="25">${datiProfilo.frasePres}</textarea>
@@ -73,7 +71,7 @@
                         </div>   
                         <div class="profilo-riga">
                             <div class="profilo-riga-label"> 
-                                Inserisci data di nascita
+                                <label>Inserisci data di nascita:</label>     
                             </div>
                             <div class="profilo-riga-input">
                                 <input type="date" name="datanasc" id="datanasc" value="${datiProfilo.dataNasc}">
@@ -81,7 +79,7 @@
                         </div>
                         <div class="profilo-riga">
                             <div class="profilo-riga-label"> 
-                                Password
+                                <label>Password:</label> 
                             </div>
                             <div class="profilo-riga-input">
                                 <input type="password" name="password" id ="password" value="${datiProfilo.password}">
@@ -89,7 +87,7 @@
                         </div>
                         <div class="profilo-riga">
                             <div class="profilo-riga-label"> 
-                                Conferma Password
+                                <label for="password">Conferma Password:</label>
                             </div>
                             <div class="profilo-riga-input">
                                 <input type="password" name="cpassword" id ="cpassword" value="${datiProfilo.password}" >
@@ -97,8 +95,7 @@
                         </div>
                         <div class="profilo-riga padding-left-10">
                             <button class="button-profilo button" type="submit">Conferma e invia</button> 
-                        </div>
-                            
+                        </div>                            
                     </form>
                 </div> 
             </div>

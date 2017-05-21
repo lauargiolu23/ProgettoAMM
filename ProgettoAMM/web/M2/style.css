@@ -1,5 +1,5 @@
 body{
-    font-family: Helvetica,Arial, sans-serif 12px;
+    font-family: Helvetica,Arial, sans-serif;
     margin: 0px;
     padding: 0px;
 }
@@ -77,12 +77,12 @@ header{
 }
 
 .contenitore {
-    widht:100%;
+    /*widht:100%;*/
     top: 0px;
 
 }
 .barraTop {
-    widht: 80%;
+    /*widht: 80%;*/
     margin: auto;
     color: #FFFFFF;
     display: inline;
@@ -156,7 +156,7 @@ ul#menu {
 }
 
 .corpo-social {
-    paddin: 0px;
+    padding: 0px;
     padding-left: 5%;
     padding-top: 3em;
     width: 15%;
@@ -231,6 +231,8 @@ ul#menu {
 }
 #frasepres textarea{
     resize: none;
+    height: 45px;
+    width: 240px;
 }
 
 .profilo-riga{
@@ -289,13 +291,13 @@ ul#menu {
     padding: 3em;
     background-color: whitesmoke;
 }
-
+/*
 @media (min-width: 1024px) and (max-width: 4096)
 {
 
     
 }
-
+*/
  @media only screen and (max-width: 720px)
 {
     .corpo {
@@ -322,15 +324,14 @@ ul#menu {
         margin-right: -2px;
         padding: 5%
     }
-    @media (max-width: 480px)
+    /*
+     @media (max-width: 480px)
     {
-        label#username:after {
-            content: '\A';
-            white-space: pre;
+        input#username{
+            display: inline-block;
             
             
         }    
     }
-
-    
+    */
 }  
