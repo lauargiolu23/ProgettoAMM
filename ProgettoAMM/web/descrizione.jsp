@@ -18,7 +18,8 @@
         <link rel="stylesheet" type="text/css" href="style.css" media="screen">
     </head>
     
-    <body>       
+    <body>
+        <c:set var="page" value = "descrizione" scope = "request" />
         <jsp:include page="header.jsp"/>
         <div id="info">
             <ul>

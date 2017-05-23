@@ -41,8 +41,8 @@
                         </c:if>                         
                            
                     </div>
-                     </c:forEach>  
-                </div>
+                     </c:forEach>
+                </div>               
             </div>
         </div>
     </body>

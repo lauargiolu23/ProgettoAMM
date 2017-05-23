@@ -14,6 +14,16 @@ import java.util.List;
  */
 public class PostFactory {
     
+    private String connectionString;
+        
+    public void setConnectionString(String s){
+    	this.connectionString = s;
+    }
+
+    public String getConnectionString(){
+    	return this.connectionString;
+    }
+    
     private static PostFactory singleton;
 
     public static PostFactory getInstance() {

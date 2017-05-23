@@ -186,6 +186,7 @@ ul#menu {
     border-radius: 3px;
     word-wrap:break-word;
     margin-bottom: 5px;
+    padding: 2%;
 }
 .nomeUtente{
     margin-top: 1%;
@@ -290,7 +291,18 @@ ul#menu {
     margin-top: 10%;
     padding: 3em;
     background-color: whitesmoke;
+    
 }
+
+#invalidDataWarning{
+    color: #F62F2F;
+    font-family: Helvetica,Arial, sans-serif;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+
 /*
 @media (min-width: 1024px) and (max-width: 4096)
 {
@@ -324,6 +336,7 @@ ul#menu {
         margin-right: -2px;
         padding: 5%
     }
+    
     /*
      @media (max-width: 480px)
     {

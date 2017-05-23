@@ -13,6 +13,16 @@ import java.util.Set;
  */
 public class UtentiRegistratiFactory {
     
+    private String connectionString;
+        
+    public void setConnectionString(String s){
+    	this.connectionString = s;
+    }
+
+    public String getConnectionString(){
+    	return this.connectionString;
+    }
+    
     private static UtentiRegistratiFactory singleton;
 
     public static UtentiRegistratiFactory getInstance() {
