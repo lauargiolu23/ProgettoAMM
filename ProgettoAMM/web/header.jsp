@@ -29,13 +29,23 @@
             <strong>Nome:</strong> 
                 ${utenti.nome}
         </p>--%>
-        <c:if test="${page == 'descrizione'}">
+        <c:choose>
+            <c:when test="${empty param.user}">
+           <a href="Login?logout=1">Logout</a>
+            </c:when>
+            <c:otherwise>
+           <a href="Login">Login</a>
+            </c:otherwise>
+        </c:choose>
+           
+<!--        <c:if test="{not empty param.user}">
             <a href="Login">Login</a>
         </c:if>
+        <c:if test="{empty param.user}">
+            <a href="Login?logout=1">Logout</a>
+        </c:if>-->
 
     </div>
         
-    <c:if test="${empty param.user}">
-        <a href="Login?logout=1">Logout</a>
-    </c:if>
+    
 </div>

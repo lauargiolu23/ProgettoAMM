@@ -5,24 +5,25 @@
  */
 package amm.nerdbook;
 
-import amm.nerdbook.Classi.Post;
-import amm.nerdbook.Classi.PostFactory;
-import amm.nerdbook.Classi.UtentiRegistrati;
-import amm.nerdbook.Classi.UtentiRegistratiFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import amm.nerdbook.Classi.Post;
+import amm.nerdbook.Classi.UtentiRegistratiFactory;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
  * @author Argio
  */
-public class Bacheca extends HttpServlet {
+public class InviaPost extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,40 +37,37 @@ public class Bacheca extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        // sessione e riprende
-        HttpSession session = request.getSession();
-        
-        
-        //Se è impostato il parametro GET logout, distrugge la sessione
-        if(request.getParameter("logout")!=null)
-        {
-            session.invalidate();
-            request.getRequestDispatcher("bacheca.jsp").forward(request, response);
-            return;
-        }
-        
-        int id = (int)session.getAttribute("loggedUserID");
-        UtentiRegistrati utente = UtentiRegistratiFactory.getInstance().getUtenteById(id);
-            if(utente == null){
-                
-                response.setStatus(HttpServletResponse.SC_NOT_FOUND);
-            }
-        //prendo valore idUtenteLoggato in sessione
-        
-        PostFactory postF = PostFactory.getInstance();
-        List<Post> postsUtente = postF.getPostList(utente);
-        request.setAttribute("posts", postsUtente);
-        request.setAttribute("utenti", UtentiRegistratiFactory.getInstance().GetAll());
-        request.setAttribute("utente",utente );
-        request.getRequestDispatcher("bacheca.jsp").forward(request, response);
 
-        /*UtentiRegistrati utente = UtentiRegistratiFactory.getInstance().getUtenteById(id);
-        ArrayList<Post> postsUtente = new ArrayList<>();
-                postUtente = PostFactory.getInstance().getPostList(utente);
-        request.setAttribute("posts", postsUtente);        
-        request.setAttribute("utente",utente );*/
         
+        UtentiRegistratiFactory utenteFactory = UtentiRegistratiFactory.getInstance();
+        
+        Post post1 = new Post();
+        post1.setContent("Solo il nostro gusto individuale, alla fine, riesce davvero a creare uno stile o una moda,"
+                + " poiché non si preoccupa di seguire la scia degli altri. Perciò, indipendentemente dall’oggetto che il gusto individuale"
+                + " ci fa scegliere, sia esso una scala a pioli oppure una cesta di vimini, alla base ci deve essere una scelta profondamente personale");
+        post1.setId(0);
+        post1.setUser(utenteFactory.getUtenteById(13));
+        post1.setPostType(Post.Type.TEXT);
+        
+        try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(utenteFactory.getConnectionString(), "Lauretta23", "1234");
+            
+            String query = "INSERT INTO post (post_id, content, type, author, testo)"
+                    + "VALUES (default, 'https://it-it.facebook.com/', 3, 13, 'La sincerità è l eventuale inganno di tutti i grandi uomini.')";
+            
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+                       
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

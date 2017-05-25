@@ -16,6 +16,10 @@
         <servlet-name>Bacheca</servlet-name>
         <servlet-class>amm.nerdbook.Bacheca</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>InviaPost</servlet-name>
+        <servlet-class>amm.nerdbook.InviaPost</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>Bacheca</servlet-name>
         <url-pattern>/Bacheca</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InviaPost</servlet-name>
+        <url-pattern>/InviaPost</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

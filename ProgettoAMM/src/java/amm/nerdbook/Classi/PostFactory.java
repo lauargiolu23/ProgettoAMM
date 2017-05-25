@@ -5,6 +5,11 @@
  */
 package amm.nerdbook.Classi;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +40,7 @@ public class PostFactory {
 
     private ArrayList<Post> listaPost = new ArrayList<Post>();
 
-  private PostFactory() {
+  private PostFactory() {/*
         
         UtentiRegistratiFactory utenteFactory = UtentiRegistratiFactory.getInstance();
 
@@ -62,28 +67,135 @@ public class PostFactory {
 
         listaPost.add(post1);
         listaPost.add(post2);
-        listaPost.add(post3);
+        listaPost.add(post3);*/
         
     }
 
-    public Post getPostById(int id) {
+    public Post getPostById(int id) {/*
         for (Post post : this.listaPost) {
             if (post.getId() == id) {
                 return post;
             }
         }
+        return null;*/
+        UtentiRegistratiFactory utentiFactory = UtentiRegistratiFactory.getInstance();
+        
+          try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "Lauretta23", "1234");
+            
+            String query = 
+                      "select * from post "
+                    + "join posttype on post.type = posttype.posttype_id "
+                    + "where post_id = ?";
+            
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+            
+            // Si associano i valori
+            stmt.setInt(1, id);
+            
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+
+            // ciclo sulle righe restituite
+            if (res.next()) {
+                Post current = new Post();
+                //imposto id del post
+                current.setId(res.getInt("post_id"));
+                
+                //impost il contenuto del post
+                current.setContent(res.getString("content"));
+                
+                //imposto il tipo del post
+                current.setPostType(this.postTypeFromString(res.getString("posttype_name")));
+                
+                //imposto l'autore del post
+                UtentiRegistrati autore = utentiFactory.getUtenteById(res.getInt("author"));
+                current.setUser(autore);
+
+                stmt.close();
+                conn.close();
+                return current;
+            }
+
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return null;
     }
+    
+    
+    
+    /*ERRORE:
+    Nonostante i continui tentativi non sono riuscita a farmi restituire la lista dei post.
+    
+    se fosse possibile vorrei spiegarmi la motivazione.
+    
+    Gazie!
+     
+    */
+    
 
     public List getPostList(UtentiRegistrati user) {
 
+//        List<Post> listaPost = new ArrayList<Post>();
+//
+//        for (Post post : this.listaPost) {
+//            UtentiRegistrati utente = post.getUser();
+//            if (utente.equals(user)) {
+//                listaPost.add(post);
+//            }
+//        }
+//        return listaPost;
         List<Post> listaPost = new ArrayList<Post>();
+        
+        try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "Lauretta23", "1234");
+            
+//            String query = "select content from post "
+//                    + "join posttype on post.type = posttype.posttype_id "
+//                    + "where author = ?";
+            
+            String query = "select * from post join postType on type = posttype_id where author = ?";
 
-        for (Post post : this.listaPost) {
-            if (post.getUser().equals(user)) {
-                listaPost.add(post);
+
+            PreparedStatement stmt = conn.prepareStatement(query);
+            
+            // Si associano i valori
+            stmt.setInt(1, user.getId());
+            
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+
+            // ciclo sulle righe restituite
+            while (res.next()) {
+                
+                Post current = new Post();
+                //imposto id del post
+                current.setId(res.getInt("post_id"));
+                
+                //impost il contenuto del post
+                current.setContent(res.getString("content"));
+                
+                //imposto il tipo del post
+                current.setPostType(this.postTypeFromString(res.getString("posttype_name")));
+
+                //imposto l'autore del post
+                current.setUser(user);
+                
+                listaPost.add(current);
             }
+
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+
         return listaPost;
     }
     
@@ -102,4 +214,12 @@ public class PostFactory {
         }
         return listaPost;
     }
+    private Post.Type postTypeFromString(String type){
+        if(type.equals("IMAGE"))
+            return Post.Type.IMAGE;
+        if(type.equals("URL"))
+            return Post.Type.URL;
+        return Post.Type.TEXT;
+    }
+    
 }

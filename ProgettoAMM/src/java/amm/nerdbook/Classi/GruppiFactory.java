@@ -34,7 +34,7 @@ public class GruppiFactory {
 
     private ArrayList<Gruppi> listaGruppi = new ArrayList<Gruppi>();
        
-    private GruppiFactory() {
+    private GruppiFactory() {/*
         
         UtentiRegistratiFactory utenteFactory = UtentiRegistratiFactory.getInstance();
 
@@ -57,6 +57,6 @@ public class GruppiFactory {
         
         listaGruppi.add(gruppo1);
         listaGruppi.add(gruppo2);
-        listaGruppi.add(gruppo3);
+        listaGruppi.add(gruppo3);*/
     }
 }

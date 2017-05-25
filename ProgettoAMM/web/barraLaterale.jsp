@@ -12,8 +12,7 @@
     <div id="persone">
         <p>PERSONE</p>
         <c:forEach var="utenti" items="${utenti}">
-        ///
-        <a href="Bacheca?user=${utenti.id}">${utenti.nome}${utenti.cognome}</a>  
+            <p> <a href="Bacheca?user=${utenti.id}">${utenti.nome}${utenti.cognome}</a>  </p>
         </c:forEach>
     </div>
     <div id="gruppi">

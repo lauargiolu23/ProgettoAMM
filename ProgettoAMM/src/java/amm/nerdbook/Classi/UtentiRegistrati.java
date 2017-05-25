@@ -45,7 +45,7 @@ public class UtentiRegistrati {
         return username;
     }
     
-    public void Username(String username){
+    public void setUsername(String username){
         this.username = username;                
     }
 

@@ -15,8 +15,8 @@ public class Post {
         TEXT, IMAGE, URL;
     };
 
-    protected int id;
-    protected UtentiRegistrati user;
+    private int id;
+    private UtentiRegistrati user;
     private String content;
     private Type postType;
 

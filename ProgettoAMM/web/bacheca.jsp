@@ -25,8 +25,19 @@
                 <jsp:include page="barraLaterale.jsp"/>
                 
                 <div class="corpo-profilo">
+                    <form action="InviaPost">
+                        <div class="post">
+                            <div>
+                                <input type="text" name="url_img" id ="url_img">
+                            </div>
+                            <div>
+                                <textarea name="contenuto" id="contenuto" rows="5" cols="25"></textarea>
+                            </div>                        
+                        </div>
+                        <button>Invia post</button>
+                    </form>
                     <c:forEach var="post" items="${posts}">
-                        
+                                                
                     <div class="post">
                         <img class="imgProfile" alt="Foto Profilo" src="${utente.imgProfilo}" width="150" height="150">
                         <h2 class="nomeUtente">${utente.nome}</h2>
@@ -38,8 +49,7 @@
                         </c:if>
                         <c:if test="${post.postType == 'URL'}">
                             <a href="${post.content}">${post.content}</a>
-                        </c:if>                         
-                           
+                        </c:if>                             
                     </div>
                      </c:forEach>
                 </div>               
