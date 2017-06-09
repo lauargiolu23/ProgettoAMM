@@ -175,6 +175,11 @@ ul#menu {
     margin-right: -2px;
     padding: 5%
 }
+#post{
+    font-family: Helvetica,Arial, sans-serif;
+    align-content: center;
+    font-weight: bold;    
+}
 
 .post{
     margin-left: 8%;

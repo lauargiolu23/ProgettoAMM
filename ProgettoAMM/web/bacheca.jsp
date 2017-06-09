@@ -26,7 +26,7 @@
             <div class="corpo">
                 <jsp:include page="barraLaterale.jsp"/>
                 <div class="corpo-profilo">
-                    <p>Bacheca di ${utente.nome} ${utente.cognome}</p> 
+                    <div id="post" <p>Bacheca di ${utente.nome} ${utente.cognome}</p> </div>
                     <form action="InviaPost">
                         <div class="post">
                             <div>

@@ -51,7 +51,7 @@ public class Filter extends HttpServlet {
                 request.setAttribute("listaUtentiCercati", listaUtenti);
                 
                 // Quando si restituisce del json e' importante segnalarlo ed evitare il caching
-                response.setContentType("application/json");
+                response.setContentType("text");
                 response.setHeader("Expires", "Sat, 6 May 1995 12:00:00 GMT");
                 response.setHeader("Cache-Control", "no-store, no-cache, "
                         + "must-revalidate");

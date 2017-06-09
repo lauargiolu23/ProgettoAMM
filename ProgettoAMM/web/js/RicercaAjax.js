@@ -53,7 +53,7 @@ $(document).ready(function(){
             },
             dataType:"json",
             success: function(data, state){
-                console.log("si");
+                console.log(data);
                 stateSuccess(data)
             },
             error: function(data, state){
