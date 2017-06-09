@@ -20,6 +20,10 @@
         <servlet-name>InviaPost</servlet-name>
         <servlet-class>amm.nerdbook.InviaPost</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Filter</servlet-name>
+        <servlet-class>amm.nerdbook.Filter</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>InviaPost</servlet-name>
         <url-pattern>/InviaPost</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Filter</servlet-name>
+        <url-pattern>/Filter</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

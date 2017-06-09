@@ -109,30 +109,30 @@ VALUES (default, 'URL');
 
 */--Popolamento tabella Post
 
-           /* 
-            INSERT INTO post (post_id, content, type, author, testo)
-            VALUES (default,
-                    '',
-                    1,
-                    1,
-                    'Solo il nostro gusto individuale, alla fine, riesce davvero a creare uno stile o una moda,
-                    poiché non si preoccupa di seguire la scia degli altri. Perciò, indipendentemente dall’oggetto che il gusto individuale
-                    ci fa scegliere, alla base ci deve essere una scelta profondamente personale');
-*/
+           
+/*    INSERT INTO post (post_id, content, type, author, testo)
+    VALUES (default,
+            '',
+            1,
+            13,
+            'Solo il nostro gusto individuale, alla fine, riesce davvero a creare uno stile o una moda,
+            poiché non si preoccupa di seguire la scia degli altri. Perciò, indipendentemente dall’oggetto che il gusto individuale
+            ci fa scegliere, alla base ci deve essere una scelta profondamente personale');
 
-/*
+
+
 INSERT INTO post (post_id, content, type, author, testo)
 VALUES (default,
         'img/Foto4.jpg',
         2,
-        2,
+        14,
         'l’importante non è vincere..ma uscire dalla sconfitta a testa alta!!');
 
 INSERT INTO post (post_id, content, type, author, testo)
 VALUES (default,
         'https://it-it.facebook.com/',
         3,
-        3,
+        15,
         'La sincerità è l eventuale inganno di tutti i grandi uomini.');
 */
 

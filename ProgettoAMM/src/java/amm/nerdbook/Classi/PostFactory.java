@@ -183,6 +183,8 @@ public class PostFactory {
                 
                 //imposto il tipo del post
                 current.setPostType(this.postTypeFromString(res.getString("posttype_name")));
+                
+                current.setTesto(res.getString("testo"));
 
                 //imposto l'autore del post
                 current.setUser(user);

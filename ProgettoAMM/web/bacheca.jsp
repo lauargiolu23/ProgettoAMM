@@ -17,33 +17,35 @@
         <meta name="author" content="ArgioluLaura">
         <meta name="keywords" content="Nerdbook social network amicizie foto like.">
         <link rel="stylesheet" type="text/css" href="style.css" media="screen">
+        <script language="javascript" type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+        <script language="javascript" type="text/javascript" src="js/RicercaAjax.js"></script>
     </head>    
     <body>    
         <div class="contenitore">
             <jsp:include page="header.jsp"/>
             <div class="corpo">
                 <jsp:include page="barraLaterale.jsp"/>
-                
                 <div class="corpo-profilo">
+                    <p>Bacheca di ${utente.nome} ${utente.cognome}</p> 
                     <form action="InviaPost">
                         <div class="post">
                             <div>
-                                <input type="text" name="url_img" id ="url_img">
+                                <input type="text" name="url_immagine" id="url_immagine">
                             </div>
                             <div>
-                                <textarea name="contenuto" id="contenuto" rows="5" cols="25"></textarea>
-                            </div>                        
+                                <textarea name="testo" id="testo" rows="5" cols="15"></textarea>
+                            </div>    
+                            <button>Invia post</button>
                         </div>
-                        <button>Invia post</button>
                     </form>
+                    
                     <c:forEach var="post" items="${posts}">
-                                                
+                    
+                    
                     <div class="post">
                         <img class="imgProfile" alt="Foto Profilo" src="${utente.imgProfilo}" width="150" height="150">
-                        <h2 class="nomeUtente">${utente.nome}</h2>
-                        <c:if test="${post.postType == 'TEXT'}">
-                            <p>${post.content}</p>
-                        </c:if>
+                        <h2 class="nomeUtente">${utente.nome} ${utente.cognome}</h2>
+                        <p>${post.testo}</p>
                         <c:if test="${post.postType == 'IMAGE'}">
                             <img alt="Post con foto" src="${post.content}">
                         </c:if>

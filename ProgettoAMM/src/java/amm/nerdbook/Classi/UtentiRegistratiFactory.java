@@ -194,8 +194,7 @@ public class UtentiRegistratiFactory {
             // path, username, password
             Connection conn = DriverManager.getConnection(connectionString, "Lauretta23", "1234");
             
-            String query = 
-                      "select utenti_id from utenti "
+            String query = "select utenti_id from utenti "
                     + "where username = ? and password = ?";
             
             // Prepared Statement
@@ -224,6 +223,40 @@ public class UtentiRegistratiFactory {
         }
         return -1;
     }
+    public List<UtentiRegistrati> getsearchList(String stringa){
+            
+        List<UtentiRegistrati> listaUtenti = new ArrayList<UtentiRegistrati>();
+    
+        try{    
+            Connection conn = DriverManager.getConnection(connectionString, "Lauretta23", "1234");
+            
+            String query = "select utenti_id, nome, cognome, imgprofilo from utenti where nome like '"+ stringa +"'";
+
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+                        
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+            
+            // ciclo sulle righe restituite
+            while (res.next()) {
+                UtentiRegistrati current = new UtentiRegistrati();
+                current.setId(res.getInt("utenti_id"));
+                current.setNome(res.getString("nome"));
+                current.setCognome(res.getString("cognome"));
+                
+                listaUtenti.add(current);
+            }
+
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return listaUtenti;
+    }
+
         
 }
 

@@ -19,17 +19,18 @@
     </div>
     <div class="barraTop-log barraTopColor">
        
+        <!--<p></p>-->
         
-        <%--Inserire il nome dell'utente loggato
-            far funzionare login per aprire la sessione e poi logout per chiuderla....
-        
-        
-        
-        <p id="Name">
-            <strong>Nome:</strong> 
-                ${utenti.nome}
-        </p>--%>
-        <c:choose>
+        <div class="barraTop-log">  
+            <!--${utente.nome}${utente.cognome}-->
+            <c:if test="${empty param.loggedUserID}">
+            <p id="logOutLink"><a href="Login?logout=1">Login</a></p>
+            </c:if>
+            <c:if test="${empty param.loggedUserID}">
+            <p id="logOutLink"><a href="Login?logout=1">Logout</a></p>
+            </c:if>
+        </div>
+ <!--        <c:choose>
             <c:when test="${empty param.user}">
            <a href="Login?logout=1">Logout</a>
             </c:when>
@@ -38,7 +39,7 @@
             </c:otherwise>
         </c:choose>
            
-<!--        <c:if test="{not empty param.user}">
+       <c:if test="{not empty param.user}">
             <a href="Login">Login</a>
         </c:if>
         <c:if test="{empty param.user}">

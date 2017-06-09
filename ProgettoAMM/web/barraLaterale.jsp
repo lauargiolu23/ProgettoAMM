@@ -9,6 +9,13 @@
 
 <!DOCTYPE html>
 <div class="corpo-social">
+    <div id="searchUtente">
+        <input id="search" type="text" placeholder="search your User!" value="">
+        <button id="idbottone">Ricerca Utente</button>
+    </div>
+    <div id="usersList">
+        <p></p>
+    </div>
     <div id="persone">
         <p>PERSONE</p>
         <c:forEach var="utenti" items="${utenti}">

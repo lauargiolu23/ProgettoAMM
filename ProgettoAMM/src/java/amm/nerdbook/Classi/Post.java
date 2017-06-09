@@ -19,6 +19,7 @@ public class Post {
     private UtentiRegistrati user;
     private String content;
     private Type postType;
+    private String testo;
 
     public Post() {
         id = 0;
@@ -35,33 +36,35 @@ public class Post {
         this.id = id;
     }
 
-    
     public UtentiRegistrati getUser() {
         return user;
     }
-
 
     public void setUser(UtentiRegistrati user) {
         this.user = user;
     }
 
-
     public String getContent() {
         return content;
     }
 
- 
     public void setContent(String content) {
         this.content = content;
     }
-
 
     public Type getPostType() {
         return postType;
     }
 
- 
     public void setPostType(Type postType) {
         this.postType = postType;
+    }
+
+    public String getTesto() {
+        return testo;
+    }
+
+    public void setTesto(String testo) {
+        this.testo = testo;
     }
 }

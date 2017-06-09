@@ -5,8 +5,6 @@
  */
 package amm.nerdbook;
 
-import amm.nerdbook.Classi.Post;
-import amm.nerdbook.Classi.PostFactory;
 import amm.nerdbook.Classi.UtentiRegistrati;
 import amm.nerdbook.Classi.UtentiRegistratiFactory;
 import java.io.IOException;
@@ -22,7 +20,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Argio
  */
-public class Bacheca extends HttpServlet {
+public class Filter extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,43 +33,34 @@ public class Bacheca extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+                
         response.setContentType("text/html;charset=UTF-8");
         
-        // sessione e riprende
-        HttpSession session = request.getSession(false);     
-        //Se è impostato il parametro GET logout, distrugge la sessione
-        if(request.getParameter("logout")!=null)
+        HttpSession session = request.getSession(false);
+   
+         String command = request.getParameter("cmd");
+        if (command != null) 
         {
-            session.invalidate();
-            request.getRequestDispatcher("bacheca.jsp").forward(request, response);
-            return;
-        }
-        
-        int id = (int)session.getAttribute("loggedUserID");
-        if(request.getParameter("user") != null){
-            id = Integer.parseInt(request.getParameter("user"));
-        }
-        
-        UtentiRegistrati utente = UtentiRegistratiFactory.getInstance().getUtenteById(id);
-            if(utente == null){
+            // Verifica che commando e id siano stati impostati
+            if (command.equals("search")) 
+            {
+                String strings = request.getParameter("nomeUtenteCercato");
+                // Esegue la ricerca
+                List<UtentiRegistrati> listaUtenti = UtentiRegistratiFactory.getInstance().getsearchList(strings);
                 
-                response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+                request.setAttribute("listaUtentiCercati", listaUtenti);
+                
+                // Quando si restituisce del json e' importante segnalarlo ed evitare il caching
+                response.setContentType("application/json");
+                response.setHeader("Expires", "Sat, 6 May 1995 12:00:00 GMT");
+                response.setHeader("Cache-Control", "no-store, no-cache, "
+                        + "must-revalidate");
+                
+                // Genero il json con una jsp
+                request.getRequestDispatcher("bacheca.jsp").
+                        forward(request, response);
             }
-        //prendo valore idUtenteLoggato in sessione
-        
-        PostFactory postF = PostFactory.getInstance();
-        List<Post> postsUtente = postF.getPostList(utente);
-        request.setAttribute("posts", postsUtente);
-        request.setAttribute("utenti", UtentiRegistratiFactory.getInstance().GetAll());
-        request.setAttribute("utente",utente );
-        request.getRequestDispatcher("bacheca.jsp").forward(request, response);
-
-        /*UtentiRegistrati utente = UtentiRegistratiFactory.getInstance().getUtenteById(id);
-        ArrayList<Post> postsUtente = new ArrayList<>();
-                postUtente = PostFactory.getInstance().getPostList(utente);
-        request.setAttribute("posts", postsUtente);        
-        request.setAttribute("utente",utente );*/
-        
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
