@@ -13,9 +13,15 @@ import java.util.List;
  * @author Argio
  */
 public class Gruppi {
+    private int id;
     private String nome;
     private List<UtentiRegistrati> iscritti = new ArrayList<UtentiRegistrati>();
 
+    public Gruppi(){
+       id= 0;
+       nome = "";
+    }
+    
     /**
      * @return the nome
      */
@@ -29,7 +35,16 @@ public class Gruppi {
     public void setNome(String nome) {
         this.nome = nome;
     }
+    
+    public int getId(){
+        return this.id;
+    }
+    
+    public void setId(int id){
+        this.id = id;
+    }
 
+    
     public List<UtentiRegistrati> getIscritti() {
         return iscritti;
     }
@@ -38,12 +53,13 @@ public class Gruppi {
         this.iscritti.add(utente);
     }
     
-    public UtentiRegistrati getUtenteById(int id){
+    public ArrayList getUtenteById(){
+        
+        ArrayList<UtentiRegistrati> listaU = new ArrayList<UtentiRegistrati>();
         for(UtentiRegistrati item : this.iscritti){
-            if(item.getId() == id)
-                return item;
+            listaU.add(item);
         }
-        return null;
+        return listaU;
     }
     
     

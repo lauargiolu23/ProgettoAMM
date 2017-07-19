@@ -27,17 +27,9 @@
                 <jsp:include page="barraLaterale.jsp"/>
                 <div class="corpo-profilo">
                     <div id="post" <p>Bacheca di ${utente.nome} ${utente.cognome}</p> </div>
-                    <form action="InviaPost">
-                        <div class="post">
-                            <div>
-                                <input type="text" name="url_immagine" id="url_immagine">
-                            </div>
-                            <div>
-                                <textarea name="testo" id="testo" rows="5" cols="15"></textarea>
-                            </div>    
-                            <button>Invia post</button>
-                        </div>
-                    </form>
+                    <div id="frase" <p>${utente.frasePres}</p> </div>
+
+                     <jsp:include page="nuovoPost.jsp"/>
                     
                     <c:forEach var="post" items="${posts}">
                     

@@ -40,48 +40,12 @@ public class PostFactory {
 
     private ArrayList<Post> listaPost = new ArrayList<Post>();
 
-  private PostFactory() {/*
-        
-        UtentiRegistratiFactory utenteFactory = UtentiRegistratiFactory.getInstance();
+  private PostFactory() {}
 
-        //Creazione Post
-        Post post1 = new Post();
-        post1.setContent("Solo il nostro gusto individuale, alla fine, riesce davvero a creare uno stile o una moda,"
-                + " poiché non si preoccupa di seguire la scia degli altri. Perciò, indipendentemente dall’oggetto che il gusto individuale"
-                + " ci fa scegliere, sia esso una scala a pioli oppure una cesta di vimini, alla base ci deve essere una scelta profondamente personale");
-        post1.setId(0);
-        post1.setUser(utenteFactory.getUtenteById(0));
-        post1.setPostType(Post.Type.TEXT);
-
-        Post post2 = new Post();
-        post2.setContent("img/Foto4.jpg");
-        post2.setId(1);
-        post2.setUser(utenteFactory.getUtenteById(0));
-        post2.setPostType(Post.Type.IMAGE);
-
-        Post post3 = new Post();
-        post3.setContent("https://it-it.facebook.com/");
-        post3.setId(2);
-        post3.setUser(utenteFactory.getUtenteById(1));
-        post3.setPostType(Post.Type.URL);
-
-        listaPost.add(post1);
-        listaPost.add(post2);
-        listaPost.add(post3);*/
-        
-    }
-
-    public Post getPostById(int id) {/*
-        for (Post post : this.listaPost) {
-            if (post.getId() == id) {
-                return post;
-            }
-        }
-        return null;*/
+    public Post getPostById(int id) {
         UtentiRegistratiFactory utentiFactory = UtentiRegistratiFactory.getInstance();
         
           try {
-            // path, username, password
             Connection conn = DriverManager.getConnection(connectionString, "Lauretta23", "1234");
             
             String query = 
@@ -89,16 +53,12 @@ public class PostFactory {
                     + "join posttype on post.type = posttype.posttype_id "
                     + "where post_id = ?";
             
-            // Prepared Statement
             PreparedStatement stmt = conn.prepareStatement(query);
             
-            // Si associano i valori
             stmt.setInt(1, id);
             
-            // Esecuzione query
             ResultSet res = stmt.executeQuery();
 
-            // ciclo sulle righe restituite
             if (res.next()) {
                 Post current = new Post();
                 //imposto id del post
@@ -127,18 +87,6 @@ public class PostFactory {
         return null;
     }
     
-    
-    
-    /*ERRORE:
-    Nonostante i continui tentativi non sono riuscita a farmi restituire la lista dei post.
-    
-    se fosse possibile vorrei spiegarmi la motivazione.
-    
-    Gazie!
-     
-    */
-    
-
     public List getPostList(UtentiRegistrati user) {
 
 //        List<Post> listaPost = new ArrayList<Post>();
@@ -153,25 +101,18 @@ public class PostFactory {
         List<Post> listaPost = new ArrayList<Post>();
         
         try {
-            // path, username, password
             Connection conn = DriverManager.getConnection(connectionString, "Lauretta23", "1234");
             
-//            String query = "select content from post "
-//                    + "join posttype on post.type = posttype.posttype_id "
-//                    + "where author = ?";
+            String query = "select * from post "
+                    + "join posttype on post.type = posttype.posttype_id "
+                    + "where author = ?";
             
-            String query = "select * from post join postType on type = posttype_id where author = ?";
-
-
             PreparedStatement stmt = conn.prepareStatement(query);
             
-            // Si associano i valori
             stmt.setInt(1, user.getId());
             
-            // Esecuzione query
             ResultSet res = stmt.executeQuery();
 
-            // ciclo sulle righe restituite
             while (res.next()) {
                 
                 Post current = new Post();
@@ -184,10 +125,10 @@ public class PostFactory {
                 //imposto il tipo del post
                 current.setPostType(this.postTypeFromString(res.getString("posttype_name")));
                 
-                current.setTesto(res.getString("testo"));
-
                 //imposto l'autore del post
                 current.setUser(user);
+                //imposto testo del post
+                current.setTesto(res.getString("testo"));
                 
                 listaPost.add(current);
             }
@@ -200,7 +141,7 @@ public class PostFactory {
 
         return listaPost;
     }
-    
+    //questo non c'è è da vedere!!!!!!!!!!!!!!
     public List getPostList(Gruppi gr) {
         //prendo un gruppo
         //in ogni gruppo ci sono iscritti
@@ -223,5 +164,49 @@ public class PostFactory {
             return Post.Type.URL;
         return Post.Type.TEXT;
     }
+    
+ 
+    private int postTypeFromEnum(Post.Type type){
+        if(type == Post.Type.TEXT)
+                return 1;
+            else
+                if(type == Post.Type.IMAGE)
+                    return 2;
+        return 3;
+    }
+
+    
+    public void addNewPost(Post post){
+        try {
+
+            Connection conn = DriverManager.getConnection(connectionString, "Lauretta23", "1234");
+            
+            String query = 
+                      "insert into post (post_id, content, type, author, testo) "
+                    + "values (default, ? , ? , ? , ?)";
+            
+
+            PreparedStatement stmt = conn.prepareStatement(query);
+            
+
+            stmt.setString(1, post.getContent());
+
+            stmt.setInt(2, this.postTypeFromEnum(post.getPostType()));
+            
+            stmt.setInt(3, post.getUser().getId());
+            
+            stmt.setString(4, post.getTesto());
+            
+
+            
+            // Esecuzione query
+            stmt.executeUpdate();
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+    
+   
     
 }

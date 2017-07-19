@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import amm.nerdbook.Classi.Post;
 import amm.nerdbook.Classi.Post.Type;
+import amm.nerdbook.Classi.PostFactory;
 import amm.nerdbook.Classi.UtentiRegistrati;
 import amm.nerdbook.Classi.UtentiRegistratiFactory;
 import java.sql.Connection;
@@ -41,54 +42,53 @@ public class InviaPost extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
-        // sessione e riprende
-        HttpSession session = request.getSession(false);     
-        //Se è impostato il parametro GET logout, distrugge la sessione
-        if(request.getParameter("logout")!=null)
-        {
-            session.invalidate();
-            request.getRequestDispatcher("bacheca.jsp").forward(request, response);
-            return;
-        }       
         
-        int id = (int)session.getAttribute("loggedUserID");
-        UtentiRegistrati utenteLoggato = UtentiRegistratiFactory.getInstance().getUtenteById(id);
+        HttpSession session = request.getSession(false);
         
-        Post post1 = new Post();
-        post1.setContent(request.getParameter("url_immagine"));
-        post1.setUser(utenteLoggato);
-        post1.setPostType(Type.TEXT);
-        post1.setTesto("testo");
-        
-        /*post1.setContent("Solo il nostro gusto individuale, alla fine, riesce davvero a creare uno stile o una moda,"
-                + " poiché non si preoccupa di seguire la scia degli altri. Perciò, indipendentemente dall’oggetto che il gusto individuale"
-                + " ci fa scegliere, sia esso una scala a pioli oppure una cesta di vimini, alla base ci deve essere una scelta profondamente personale");
-        post1.setId(0);
-        post1.setUser(utenteFactory.getUtenteById(13));
-        post1.setPostType(Post.Type.TEXT);
-        */
-        UtentiRegistratiFactory utenteFactory = UtentiRegistratiFactory.getInstance();
-        try {        
-            // path, username, password
-            Connection conn = DriverManager.getConnection(utenteFactory.getConnectionString(), "Lauretta23", "1234");
-            
-            String query = "INSERT INTO post (post_id, content, type, author, testo)"
-                    + "VALUES (default, '', "+ post1.getPostType()+", "+ post1.getId() +", '"+ post1.getTesto() +"')";
-            
-            // Prepared Statement
-            PreparedStatement stmt = conn.prepareStatement(query);
-                       
-            // Esecuzione query
-            ResultSet res = stmt.executeQuery();
-
-            stmt.close();
-            conn.close();
-            
-        } catch (SQLException e) {
-            e.printStackTrace();
+        //se la sessione esiste ed esiste anche l'attributo loggedIn impostato a true
+        if(session!=null && 
+           session.getAttribute("loggedIn")!=null &&
+           session.getAttribute("loggedIn").equals(true)){
+            if(request.getParameter("thereIsPost")!=null)
+            {
+                String thereIsPost = request.getParameter("thereIsPost");
+                String content = request.getParameter("textPost");
+                String type = request.getParameter("postType");
+                String text = request.getParameter("testoType");
+                if(thereIsPost.equals("needConfirm")){
+                    request.setAttribute("content", content);
+                    request.setAttribute("text", text);
+                    request.setAttribute("typePost", type);
+                    request.setAttribute("newpost", "true");
+                    request.getRequestDispatcher("bacheca.jsp").forward(request, response);
+                    return;
+                }
+                else{
+                   
+                    Post post = new Post();
+                    post.setContent(content);
+                    if(type.equals("textType"))
+                        post.setPostType(Post.Type.TEXT);
+                    if(type.equals("imgType"))
+                        post.setPostType(Post.Type.IMAGE);
+                    else
+                        post.setPostType(Post.Type.URL);
+                   post.setTesto(text);
+                    
+                    post.setUser(UtentiRegistratiFactory.getInstance().getUtenteById((Integer)session.getAttribute("loggedUserID")));
+                    PostFactory.getInstance().addNewPost(post);
+                    request.getRequestDispatcher("Bacheca").forward(request, response);
+                }
+            }
+            else{
+                request.getRequestDispatcher("nuovopost.jsp").forward(request, response);
+                return;
+            }
         }
-
+        else{
+            request.getRequestDispatcher("Login").forward(request, response);
+        }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

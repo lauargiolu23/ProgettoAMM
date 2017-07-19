@@ -41,67 +41,9 @@ public class UtentiRegistratiFactory {
     
     private ArrayList<UtentiRegistrati> listaUtenti = new ArrayList<UtentiRegistrati>();
 
-    private UtentiRegistratiFactory() {
-     /*   //Creazione utenti
-
-        //Laura Argiolu
-        UtentiRegistrati utente1 = new UtentiRegistrati();
-        utente1.setId(0);
-        utente1.Username("Lau23");
-        utente1.setNome("Laura");
-        utente1.setCognome("Argiolu");
-        utente1.setImgProfilo("img/Foto1.jpg");
-        utente1.setFrsasePres("Non mi scoraggio perché ogni tentativo sbagliato scartato è un altro passo avanti.");
-        utente1.setDataNasc("23/08/1995");
-        utente1.setPassword("123");
-        
-        
-        //Aurora Russo
-        UtentiRegistrati utente2 = new UtentiRegistrati();
-        utente2.setId(1);
-        utente2.Username("Aury92");
-        utente2.setNome("Aurora");
-        utente2.setCognome("Russo");
-        utente2.setImgProfilo("img/Foto2.jpg");
-        utente2.setFrsasePres("Il futuro appartiene a coloro che credono nella bellezza dei propri sogni");
-        utente2.setDataNasc("03/08/1992");
-        utente2.setPassword("1011");
-        
-        //Federico Brundu
-        UtentiRegistrati utente3 = new UtentiRegistrati();
-        utente3.setId(2);
-        utente3.Username("Fede89");
-        utente3.setNome("Federico");
-        utente3.setCognome("Brundu");
-        utente3.setImgProfilo("img/Foto3.jpg");
-        utente3.setFrsasePres("Il segreto per andare avanti è iniziare");
-        utente3.setDataNasc("01/07/1989");
-        utente3.setPassword("0000");
-        
-        //Utente incompleto
-        UtentiRegistrati utente4 = new UtentiRegistrati();
-        utente4.setId(3);
-        utente4.Username("incomp23");
-        utente4.setNome("ADALGISO");
-        utente4.setCognome("");
-        utente4.setImgProfilo("");
-        utente4.setFrsasePres("");
-        utente4.setDataNasc("01/02/1992");
-        utente4.setPassword("0000");
-     
-        listaUtenti.add(utente1);
-        listaUtenti.add(utente2);
-        listaUtenti.add(utente3);
-        listaUtenti.add(utente4);*/
-    }
-
+    private UtentiRegistratiFactory(){} 
+    
     public UtentiRegistrati getUtenteById(int id) {
-       /* for (UtentiRegistrati utente : this.listaUtenti) {
-            if (utente.getId() == id) {
-                return utente;
-            }
-        }
-        return null;*/
         try {
             // path, username, password
             Connection conn = DriverManager.getConnection(connectionString, "Lauretta23", "1234");
@@ -110,7 +52,6 @@ public class UtentiRegistratiFactory {
                       "select * from utenti "
                     + "where utenti_id = ?";
             
-            // Prepared Statement
             PreparedStatement stmt = conn.prepareStatement(query);
             
             // Si associano i valori
@@ -147,20 +88,15 @@ public class UtentiRegistratiFactory {
         
         List<UtentiRegistrati> result = new ArrayList<UtentiRegistrati>();
         try {
-            // path, username, password
             Connection conn = DriverManager.getConnection(connectionString, "Lauretta23", "1234");
             
             String query = 
                       "select * from utenti";
             
-            // Prepared Statement
             PreparedStatement stmt = conn.prepareStatement(query);
             
-            
-            // Esecuzione query
             ResultSet res = stmt.executeQuery();
 
-            // ciclo sulle righe restituite
             while(res.next()) {
                 UtentiRegistrati current = new UtentiRegistrati();
                 current.setId(res.getInt("utenti_id"));
@@ -183,31 +119,19 @@ public class UtentiRegistratiFactory {
         return result;
     }
     public int getIdByUserAndPassword(String user, String password){
-        /*for(UtentiRegistrati utente : this.listaUtenti){
-            if(utente.getUsername().equals(user) && utente.getPassword().equals(password)){
-                return utente.getId();
-            }
-        }
-        return -1;*/
-        
         try {
-            // path, username, password
             Connection conn = DriverManager.getConnection(connectionString, "Lauretta23", "1234");
             
             String query = "select utenti_id from utenti "
                     + "where username = ? and password = ?";
             
-            // Prepared Statement
             PreparedStatement stmt = conn.prepareStatement(query);
             
-            // Si associano i valori
             stmt.setString(1, user);
             stmt.setString(2, password);
             
-            // Esecuzione query
             ResultSet res = stmt.executeQuery();
 
-            // ciclo sulle righe restituite
             if (res.next()) {
                 int id = res.getInt("utenti_id");
 
@@ -229,21 +153,27 @@ public class UtentiRegistratiFactory {
     
         try{    
             Connection conn = DriverManager.getConnection(connectionString, "Lauretta23", "1234");
-            
+            /*
             String query = "select utenti_id, nome, cognome, imgprofilo from utenti where nome like '"+ stringa +"'";
+*/
+            String query = 
+                      "select * from utenti where name like ?";
 
-            // Prepared Statement
             PreparedStatement stmt = conn.prepareStatement(query);
+            
+            stmt.setString(1, "%" + stringa + "%");
                         
-            // Esecuzione query
             ResultSet res = stmt.executeQuery();
             
-            // ciclo sulle righe restituite
             while (res.next()) {
                 UtentiRegistrati current = new UtentiRegistrati();
                 current.setId(res.getInt("utenti_id"));
                 current.setNome(res.getString("nome"));
                 current.setCognome(res.getString("cognome"));
+                current.setPassword(res.getString("password"));
+                current.setImgProfilo(res.getString("urlFotoProfilo"));
+                current.setFrsasePres(res.getString("fraseDiPresentazione"));
+                current.setDataNasc(res.getString("dataNascita"));
                 
                 listaUtenti.add(current);
             }
@@ -257,7 +187,48 @@ public class UtentiRegistratiFactory {
         return listaUtenti;
     }
 
-        
+    /**/
+    /*
+    public void modificaDati(Utente utente){
+        try {
+
+            Connection conn = DriverManager.getConnection(connectionString, "marko123", "asdasd");
+            
+            String query = 
+                      "update utenti (utente_id, username, nome, cognome, password, urlfotoprofilo, frasedipresentazione, datanascita) "
+                    + "values (?, ? , ? , ? , ?, ?, ? , ?)";
+            
+
+            PreparedStatement stmt = conn.prepareStatement(query);
+            
+
+            stmt.setInt(1, utente.getId());
+
+            stmt.setString(2, utente.getUsername());
+            
+            stmt.setString(3, utente.getNome());
+            
+            stmt.setString(4, utente.getCognome());
+            
+            stmt.setString(5, utente.getPassword());
+            
+            stmt.setString(6, utente.getUrlFotoProfilo());
+            
+            stmt.setString(7, utente.getFraseDiPresentazione());
+            
+            stmt.setString(8, utente.getDataNascita());
+
+            
+            // Esecuzione query
+            stmt.executeUpdate();
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+    
+    */
+       
 }
 
     

@@ -305,8 +305,36 @@ ul#menu {
     font-weight: bold;
     text-align: center;
     padding-bottom: 2em;
+    box-shadow: 0 0 1px rgba(0,0,0,0.1);
+    border-radius: 20px;
+    margin-left: 8%;
+    margin-left: 23%;
 }
 
+#post{
+    margin-left: 17%;    
+}
+
+#frase{
+    padding-left: 17%;
+    color: midnightblue;
+    font-style: italic;
+}
+
+#formNewPost #testo{
+    width: 300px;
+    height: 30px;
+}
+#formNewPost{
+    display: inline-block;
+    width: 45%;
+    background: #D3D3D3;
+    padding-left: 5%;
+    border: 1px solid #111111;
+    margin-bottom: 2%;
+    border-radius: 25px;
+    padding-bottom: 2%;
+}
 
 
 /*

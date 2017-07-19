@@ -1,0 +1,23 @@
+TABELLA: Utenti:	utenti_id	(integer)(primary key)
+			username	(varchar)
+			nome		(varchar)
+			cognome		(varchar)
+			frasePres	(varchar)
+			imgProfilo	(varchar)
+			dataDiNascita	(data)
+			password	(varchar)
+
+TABELLA: PostType:	posttype_id	(integer)(primary key)
+			posttype_name	(varchar)
+
+TABELLA: Post:		post_id		(iteger)(primary key)
+			content		(varchar)
+			type		(integer)(foreign key)->postType(posttype_id)
+			author		(integer)(foreign key)->utenti(utenti_id)
+
+TABELLA: Amicizie:	follower	(integer)(foreign key)->utenti(utenti_id)
+			followed	(integer)(foreign key)->utenti(utenti_id)
+			(foller,follewed)	(primary key)
+
+
+	

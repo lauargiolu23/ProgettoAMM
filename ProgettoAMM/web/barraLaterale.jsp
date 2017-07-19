@@ -23,10 +23,9 @@
         </c:forEach>
     </div>
     <div id="gruppi">
-        <p>Gruppi</p> 
+        <p>GRUPPI</p> 
         <c:forEach var="gruppi" items="${gruppi}">
-        ///
-        <p>${gruppi.nome}</p> 
+            <p>${gruppi.nome}</p> 
         </c:forEach>
         
     </div>

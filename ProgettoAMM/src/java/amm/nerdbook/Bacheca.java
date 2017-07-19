@@ -53,10 +53,10 @@ public class Bacheca extends HttpServlet {
         }
         
         UtentiRegistrati utente = UtentiRegistratiFactory.getInstance().getUtenteById(id);
-            if(utente == null){
-                
-                response.setStatus(HttpServletResponse.SC_NOT_FOUND);
-            }
+        if(utente == null){
+
+            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+        }
         //prendo valore idUtenteLoggato in sessione
         
         PostFactory postF = PostFactory.getInstance();
