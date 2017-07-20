@@ -37,23 +37,27 @@ public class Filter extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         HttpSession session = request.getSession(false);
-   
-         String command = request.getParameter("cmd");
-        if (command != null) 
-        {
-            // Verifica che commando e id siano stati impostati
-            if (command.equals("search")) 
+        if(session!=null && 
+            session.getAttribute("loggedIn")!=null &&
+            session.getAttribute("loggedIn").equals(true)){
+            
+            String command = request.getParameter("cmd");
+            if (command != null) 
             {
-                String strings = request.getParameter("nomeUtenteCercato");
-                // Esegue la ricerca
-                List<UtentiRegistrati> listaUtenti = UtentiRegistratiFactory.getInstance().getsearchList(strings);
-                
-                request.setAttribute("listaUtentiCercati", listaUtenti);
-                
-                // Quando si restituisce del json e' importante segnalarlo ed evitare il caching
-                response.setContentType("text");
-                response.setHeader("Expires", "Sat, 6 May 1995 12:00:00 GMT");
-                response.setHeader("Cache-Control", "no-store, no-cache, "
+                // Verifica che commando e id siano stati impostati
+                if (command.equals("search")) 
+                {
+
+                    // Esegue la ricerca
+                    List<UtentiRegistrati> listaUtenti;
+                    listaUtenti = UtentiRegistratiFactory.getInstance()
+                            .getsearchList(request.getParameter("nomeUtenteCercato"));
+
+                    request.setAttribute("listaUtenti", listaUtenti);
+
+                    response.setContentType("application/json");
+                    response.setHeader("Expires", "Sat, 6 May 1995 12:00:00 GMT");
+                    response.setHeader("Cache-Control", "no-store, no-cache, "
                         + "must-revalidate");
                 
                 // Genero il json con una jsp
@@ -62,7 +66,8 @@ public class Filter extends HttpServlet {
             }
         }
     }
-
+    
+   }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

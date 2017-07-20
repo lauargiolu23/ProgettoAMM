@@ -35,7 +35,7 @@
                     
                     
                     <div class="post">
-                        <img class="imgProfile" alt="Foto Profilo" src="${utente.imgProfilo}" width="150" height="150">
+                        <img class="imgProfile" alt="Foto Profilo" src="${utente.imgProfilo}" width="75" height="50">
                         <h2 class="nomeUtente">${utente.nome} ${utente.cognome}</h2>
                         <p>${post.testo}</p>
                         <c:if test="${post.postType == 'IMAGE'}">
